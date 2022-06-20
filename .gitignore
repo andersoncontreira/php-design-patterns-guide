@@ -6,3 +6,4 @@
 /.php-cs-fixer.cache
 /.idea/
 /vendor/phpunit/
+/vendor/phpunit/phpunit/
