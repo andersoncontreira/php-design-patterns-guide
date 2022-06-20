@@ -1,0 +1,78 @@
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# Docstrings and comments use max_line_length = 79
+[*.py]
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
+end_of_line = lf
+charset = utf-8
+max_line_length = 100
+
+
+[{*.jhm, *.xslt, *.xul, *.rng, *.xsl, *.xsd, *.ant, *.tld, *.fxml, *.jrxml, *.xml, *.jnlp, *.wsdl}]
+indent_style = space
+indent_size = 4
+
+[{.babelrc, .prettierrc, .stylelintrc, .eslintrc, jest.config, *.json, *.js, *.js.map, *.ts, *.tsx, *.jsb3, *.jsb2, *.bowerrc, *.graphqlconfig}]
+indent_style = space
+indent_size = 2
+
+[.editorconfig]
+indent_style = space
+indent_size = 4
+
+[*.less]
+indent_style = space
+indent_size = 2
+
+[*.jshintrc]
+indent_style = space
+indent_size = 2
+
+[*.jscsrc]
+indent_style = space
+indent_size = 2
+
+[{tsconfig.lib.json, tsconfig.spec.json, tsconfig.app.json, tsconfig.json, tsconfig.e2e.json}]
+indent_style = space
+indent_size = 2
+
+[*.ejs]
+indent_style = space
+indent_size = 4
+
+[{.analysis_options, *.yml, *.yaml}]
+indent_style = space
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false
+
+# Use 4 spaces for the Python files
+[*.php]
+indent_size = 4
+max_line_length = 100
+
+[*.twig]
+indent_size = 4
+max_line_length = 100
+
+# The JSON files contain newlines inconsistently
+[*.json]
+insert_final_newline = false
+
+# Minified JavaScript files shouldn't be changed
+[**.min.js]
+indent_style = space
+insert_final_newline = false
+
+[*.gitkeep]
+insert_final_newline = false

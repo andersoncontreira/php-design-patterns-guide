@@ -1,0 +1,65 @@
+version: "3.2"
+services:
+#  php-design-patterns-guide:
+#    build:
+#      context: .
+#      dockerfile: ./docker/php/Dockerfile
+#    entrypoint: ["sh", "./docker/php/entrypoint.sh"]
+#    privileged: true
+#    environment:
+#      # Fake credentials for Localstack
+#      AWS_ACCESS_KEY_ID: AKIAIOSFODNN7EXAMPLE
+#      AWS_SECRET_ACCESS_KEY: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+#      TEST_ENV: ${TEST_ENV}
+#      LOCALHOST: ${LOCALHOST}
+#    depends_on:
+##      - "localstack"
+#      - "redis"
+#      - "mysql"
+#    ports:
+#      - "8000:8000"
+#    networks:
+#      - service-php-v1
+#    volumes:
+#      - ./:/app
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
+    expose:
+      - 6379
+    networks:
+      - service-php-v1
+  mysql:
+    image: mysql:5.7.22
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: store
+      MYSQL_ROOT_PASSWORD: store
+    networks:
+      - service-php-v1
+#  localstack:
+#    image: localstack/localstack
+#    privileged: true
+#    ports:
+#      - "4566:4566"
+#      - "4567-4582:4567-4582"
+#      - "9070:9070"
+#      - "8080:8080"
+#    environment:
+#      SERVICES: sqs,lambda,cloudwatch,s3
+#      DOCKER_HOST: unix:///var/run/docker.sock
+#      PORT_WEB_UI: 9070
+#      #LAMBDA_EXECUTOR: docker # está dando erro via docker
+#      LAMBDA_EXECUTOR: local
+#      DEBUG: 1
+#      HOSTNAME_EXTERNAL: localstack
+#    networks:
+#      - service-php-v1
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+#      - /tmp/localstack:/tmp/localstack
+networks:
+  service-php-v1:
+    external: true

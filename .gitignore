@@ -1,1 +1,8 @@
  .idea/
+
+/vendor/
+/.phpunit.result.cache
+/bin/
+/.php-cs-fixer.cache
+/.idea/
+/vendor/phpunit/

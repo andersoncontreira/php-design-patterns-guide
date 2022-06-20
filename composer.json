@@ -1,0 +1,75 @@
+{
+  "name": "andersoncontreira/php-design-patterns-guide",
+  "description": "Project containing real examples of design patterns, contain a guide to help the developers interest in this solutions",
+  "type": "project",
+  "config": {
+    "bin-dir": "bin/",
+    "sort-packages": true
+  },
+  "require": {
+    "php": "^7.4",
+    "ext-json": "*",
+    "ext-pdo": "*",
+    "ext-simplexml": "*",
+    "ext-tokenizer": "*",
+    "ext-xmlwriter": "*",
+    "php-middleware/request-id": "^4.0",
+    "predis/predis": "^1.1",
+    "psr/cache": "^1.0.1",
+    "psr/container": "^1.0.0",
+    "psr/http-factory": "^1.0.1",
+    "psr/http-message": "^1.0.1",
+    "psr/http-server-handler": "^1.0.1",
+    "psr/http-server-middleware": "^1.0.1",
+    "psr/log": "^1.1.3",
+    "psr/simple-cache": "^1.0.1",
+    "ramsey/uuid": "^3.9",
+    "respect/validation": "^1.1",
+    "symfony/console": "^5.4",
+    "tuupola/cors-middleware": "^1.1",
+    "tuupola/slim-jwt-auth": "^3.4",
+    "vlucas/phpdotenv": "^4.1",
+    "zircote/swagger-php": "^3.0",
+    "league/container": "^4.2",
+    "monolog/monolog": "^2.7",
+    "league/config": "^1.1",
+    "phpspec/prophecy-phpunit": "^2.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "9.5.x-dev",
+    "friendsofphp/php-cs-fixer": "^3.8"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Anderson Contreira",
+      "email": "anderson.contreira@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "autoload": {
+    "psr-4": {
+      "Application\\": "src/Application/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Application\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "check": [
+      "@lint",
+      "@test"
+    ],
+    "guidelines": "./scripts/guidelines-checker.py",
+    "start": "./scripts/runenv.sh",
+    "testenv": "./scripts/testenv.sh",
+    "lint": "./bin/php-cs-fixer fix --diff src",
+    "test": "./bin/phpunit --configuration phpunit.xml --testsuite unit-tests",
+    "test:cov": "./bin/phpunit --configuration phpunit.xml --testsuite unit-tests --coverage-html target/unit/coverage_html --coverage-clover target/unit/coverage.xml --coverage-text='target/unit/coverage.txt' --log-junit target/unit/report.xml",
+    "test:component": "./bin/phpunit --configuration phpunit.xml --testsuite component-tests",
+    "test:component-cov": "./bin/phpunit --configuration phpunit.xml --testsuite component-tests --coverage-html target/component/coverage_html --coverage-clover target/component/coverage.xml --coverage-text='target/component/coverage.txt' --log-junit target/component/report.xml"
+  }
+}
