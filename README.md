@@ -7,7 +7,7 @@ Project containing real examples of design patterns, contain a guide to help the
 ## Table of contents
 
 1. Creational
-- [Abstract Factory](#)
+- [Abstract Factory](#abstract-factory)
 - [Builder](#)
 - [Converter](#)
 - [Dependency Injection](#dependency-injection)
@@ -25,6 +25,14 @@ Project containing real examples of design patterns, contain a guide to help the
 - [Unit](#)
 - [Component](#)
 - [Integration](#)
+
+## Abstract Factory
+
+> Provide an interface for creating families of related or dependent objects without specifying their concrete classes.
+
+### References
+- https://sourcemaking.com/design_patterns/abstract_factory
+- https://java-design-patterns.com/patterns/abstract-factory/
 
 ## Dependency Injection
 In software engineering, dependency injection is a design pattern in which an object receives other objects that it depends on. 
