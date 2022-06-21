@@ -1,3 +1,6 @@
+Good reference:
+https://github.com/DesignPatternsPHP/DesignPatternsPHP
+
 
 https://github.com/mawrkus/js-unit-testing-guide#-table-of-contents
 template-lumen-service-php/blob/production/app/Providers/DependenceInjection/Services/Cognito/CognitoTokenServiceProvider.php
