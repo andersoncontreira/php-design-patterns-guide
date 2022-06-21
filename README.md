@@ -1,4 +1,4 @@
-# php-design-patterns-guide
+# php-design-patterns-guide  (Work in progress...)
 Project containing real examples of design patterns, contain a guide to help the developers interest in this solutions
 
 > All the information provided has been compiled & adapted from many references, some of them cited at the end of the document.
