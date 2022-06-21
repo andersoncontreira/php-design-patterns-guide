@@ -2,6 +2,6 @@
 
 namespace Application\Interfaces;
 
-interface Product
+interface ProductInterface
 {
 }

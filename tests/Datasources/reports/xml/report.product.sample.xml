@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<report>
+    <id>1</id>
+    <name>Common Pencil</name>
+    <supplier_id>1</supplier_id>
+    <sku>1</sku>
+    <description>Common Pencil description</description>
+    <active>1</active>
+    <created_at>2021-08-17T14:00:00</created_at>
+    <uuid>fecfddd9-7cb8-413b-9de3-ec86de30a888</uuid>
+    <category>
+        <id>1</id>
+        <name>school supplies</name>
+        <uuid>0812abaf-90fb-4877-9fe0-e2748d202584</uuid>
+    </category>
+</report>

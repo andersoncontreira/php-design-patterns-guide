@@ -76,7 +76,6 @@ class Application
         $this->instance('log', $consoleLogger);
         $this->instance(Logger::class, $consoleLogger);
 
-//        $this->registerContainerAliases();
     }
 
     /**

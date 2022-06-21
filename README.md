@@ -11,6 +11,7 @@ Project containing real examples of design patterns, contain a guide to help the
 - [Builder](#)
 - [Converter](#)
 - [Dependency Injection](#dependency-injection)
+- [Factory](#)
 - [Factory Method](#)
 - [Object Pool](#)
 - [Prototype](#)
@@ -32,15 +33,41 @@ leading to loosely coupled programs. The pattern ensures that an object which wa
 
 > More details: [Wiki](https://en.wikipedia.org/wiki/Dependency_injection) 
 
+### Samples
+
+
+### Real example samples
+
+- Application.php using the container, you can see the full code [here](./src/Application/Application.php).
+```php
+protected function bootstrapContainer()
+{
+   $this->container = new Container();
+   
+   $consoleLogger = new ConsoleLogger();
+   $this->instance('log', $consoleLogger);
+   $this->instance(Logger::class, $consoleLogger);
+}
+
+private function instance(string $id, $concrete = null): void
+{
+    $this->container->add($id, $concrete);
+}
+```
+
+
+
 ### Container
 Container is dependency injection container. It allows you to implement the dependency injection design pattern meaning that you can decouple your class dependencies and have the container inject them where they are needed.
-
-### Provider
 
 #### Common libraries and frameworks
 - https://laravel.com/api/5.8/Illuminate/Container/Container.html
 - https://laravel.com/api/5.8/Illuminate/Support/ServiceProvider.html
 - https://container.thephpleague.com/4.x/
+
+### Provider
+
+
 
 
 ## References

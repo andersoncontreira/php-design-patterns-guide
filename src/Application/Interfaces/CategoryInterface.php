@@ -2,6 +2,6 @@
 
 namespace Application\Interfaces;
 
-interface Category
+interface CategoryInterface
 {
 }
