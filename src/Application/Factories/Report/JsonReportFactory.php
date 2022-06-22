@@ -9,7 +9,6 @@ namespace Application\Factories\Report;
 use Application\Factories\ReportFactory;
 use Application\Interfaces\Reports\ReportDatasourceInterface;
 use Application\Interfaces\Reports\ReportFormatterInterface;
-use Application\Interfaces\Reports\ReportProcessorInterface;
 
 class JsonReportFactory implements ReportFactory
 {

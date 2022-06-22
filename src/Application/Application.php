@@ -4,26 +4,40 @@ declare(strict_types=1);
 
 namespace Application;
 
+use Application\Configuration\AbstractConfiguration;
+use Application\Configuration\ConfigurationTypeEnum;
+use Application\Configuration\DatabaseConfiguration;
 use Application\Logger\ConsoleLogger;
-use Application\Providers\ServiceProvider;
-use League\Container\Container;
+use Illuminate\Config\Repository as ConfigRepository;
+use Illuminate\Container\Container;
+use Illuminate\Contracts\Container\BindingResolutionException;
+use Illuminate\Database\DatabaseServiceProvider;
+use Illuminate\Pagination\PaginationServiceProvider;
+use Illuminate\Support\ServiceProvider;
 use Monolog\Logger;
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
 
-class Application
+/**
+ * Pattern Family: Creational
+ * Pattern Name: Dependency Injection
+ * Group: Dependency Injection
+ */
+class Application extends Container
 {
-    /**
-     * @var Container application Container
-     */
-    protected Container $container;
-
+//    use Concerns\RoutesRequests,
+//        Concerns\RegistersExceptionHandlers;
     /**
      * The base path of the application installation.
      *
      * @var string
      */
     protected string $basePath;
+
+    /**
+     * All of the loaded configuration files.
+     *
+     * @var array
+     */
+    protected array $loadedConfigurations = [];
 
     /**
      * Indicates if the application has "booted".
@@ -44,6 +58,7 @@ class Application
      *
      * @param string|null $basePath
      * @return void
+     * @throws BindingResolutionException
      */
     public function __construct(string $basePath = null)
     {
@@ -52,15 +67,16 @@ class Application
         $this->bootstrapContainer();
 //        $this->registerErrorHandling();
 //        $this->bootstrapRouter();
+
+        $this->registerConfigBindings();
+        $this->registerDatabaseBindings();
+
     }
 
 
     protected function bootstrapContainer()
     {
-        /**
-         * Applicaiton container
-         */
-        $this->container = new Container();
+        static::setInstance($this);
 
         /**
          * Self instances of the application
@@ -73,9 +89,20 @@ class Application
         $this->instance('env', $this->environment());
 
         $consoleLogger = new ConsoleLogger();
-        $this->instance('log', $consoleLogger);
         $this->instance(Logger::class, $consoleLogger);
 
+        $this->registerContainerAliases();
+
+    }
+
+    /**
+     * Bootstrap the router instance.
+     *
+     * @return void
+     */
+    public function bootstrapRouter()
+    {
+//        $this->router = new Router($this);
     }
 
     /**
@@ -101,44 +128,57 @@ class Application
      */
     public function path(): string
     {
-        return $this->basePath.DIRECTORY_SEPARATOR.'src'.DIRECTORY_SEPARATOR.'Application';
+        return $this->basePath . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Application';
+    }
+
+    /**
+     * Get the base path for the application.
+     *
+     * @param string $path
+     * @return string
+     */
+    public function basePath(string $path = ''): string
+    {
+        if (isset($this->basePath)) {
+            return $this->basePath . ($path ? '/' . $path : $path);
+        }
+
+        if ($this->runningInConsole()) {
+            $this->basePath = getcwd();
+        } else {
+            $this->basePath = realpath(getcwd() . '/../');
+        }
+
+        return $this->basePath($path);
+    }
+
+    /**
+     * Get the path to the database directory.
+     *
+     * @param string $path
+     * @return string
+     */
+    public function databasePath(string $path = ''): string
+    {
+        return $this->basePath.DIRECTORY_SEPARATOR.'database'.($path ? DIRECTORY_SEPARATOR.$path : $path);
     }
 
     /**
      * Get or check the current application environment.
      *
-     * @param  mixed
+     * @param mixed
      * @return string
      */
     public function environment(): string
     {
-        return getenv('APP_ENV') ?: 'development';
+        return env('APP_ENV', 'development');
     }
 
-    /**
-     * Set instance or alias to container
-     * @param string $id
-     * @param $concrete
-     * @return void
-     */
-    private function instance(string $id, $concrete = null): void
-    {
-        $this->container->add($id, $concrete);
-    }
-
-    /**
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
-     */
-    public function get(string $id)
-    {
-        return $this->container->get($id);
-    }
 
     /**
      * Determine if the given service provider is loaded.
      *
-     * @param  string  $provider
+     * @param string $provider
      * @return bool
      */
     public function providerIsLoaded(string $provider): bool
@@ -149,7 +189,7 @@ class Application
     /**
      * Boot the given service provider.
      *
-     * @param  ServiceProvider  $provider
+     * @param ServiceProvider $provider
      * @return mixed
      */
     protected function bootProvider(ServiceProvider $provider)
@@ -162,12 +202,12 @@ class Application
     /**
      * Register a service provider with the application.
      *
-     * @param  ServiceProvider|string  $provider
+     * @param ServiceProvider|string $provider
      * @return void
      */
     public function register($provider)
     {
-        if (! $provider instanceof ServiceProvider) {
+        if (!$provider instanceof ServiceProvider) {
             $provider = new $provider($this);
         }
 
@@ -187,21 +227,119 @@ class Application
     }
 
     /**
-     * @param $callback
-     * @param array $parameters
-     * @param $defaultMethod
-     * @return mixed
+     * Determine if the application is running in the console.
+     *
+     * @return bool
      */
-    private function call($callback, array $parameters = [], $defaultMethod = null)
+    public function runningInConsole(): bool
     {
-//        return BoundMethod::call($this, $callback, $parameters, $defaultMethod);
+        return \PHP_SAPI === 'cli' || \PHP_SAPI === 'phpdbg';
     }
 
     /**
-     * @return Container
+     * Determine if we are running unit tests.
+     *
+     * @return bool
      */
-    public function getContainer(): Container
+    public function runningUnitTests(): bool
     {
-        return $this->container;
+        return $this->environment() == 'testing';
     }
+
+    /**
+     * Register container bindings for the application.
+     *
+     * @return void
+     */
+    protected function registerConfigBindings()
+    {
+        $this->singleton('config', function () {
+            return new ConfigRepository;
+        });
+    }
+
+    /**
+     * Register container bindings for the application.
+     *
+     * @return void
+     */
+    protected function registerDatabaseBindings()
+    {
+        $this->singleton('db', function () {
+            $this->configure('app');
+
+            return $this->loadComponent(
+                'database', [
+                DatabaseServiceProvider::class,
+                PaginationServiceProvider::class,
+            ], 'db'
+            );
+
+        });
+
+    }
+
+    /**
+     * Configure and load the given component and provider.
+     *
+     * @param string $config
+     * @param array|string $providers
+     * @param string|null $return
+     * @return mixed
+     * @throws BindingResolutionException
+     */
+    public function loadComponent(string $config, $providers, string $return = null)
+    {
+        $this->configure($config);
+
+        foreach ((array)$providers as $provider) {
+            $this->register($provider);
+        }
+
+        return $this->make($return ?: $config);
+    }
+
+    /**
+     * Load a configuration file into the application.
+     *
+     * @param string $name
+     * @return void
+     * @throws BindingResolutionException
+     */
+    public function configure(string $name)
+    {
+        if (isset($this->loadedConfigurations[$name])) {
+            return;
+        }
+
+        $this->loadedConfigurations[$name] = true;
+
+
+        $configurationClass = ConfigurationTypeEnum::getConfiguration($name);
+
+        if ($configurationClass) {
+            /** @var AbstractConfiguration $configInstance */
+            $configInstance = new $configurationClass();
+            $this->make('config')->set($name, $configInstance->getConfiguration());
+        }
+
+    }
+
+    /**
+     * Register the core container aliases.
+     *
+     * @return void
+     */
+    protected function registerContainerAliases()
+    {
+        $this->aliases = [
+            'log' => Logger::class,
+            \Illuminate\Contracts\Foundation\Application::class => 'app',
+            \Illuminate\Container\Container::class => 'app',
+            \Illuminate\Contracts\Container\Container::class => 'app',
+            \Illuminate\Database\ConnectionResolverInterface::class => 'db',
+            \Illuminate\Database\DatabaseManager::class => 'db',
+        ];
+    }
+
 }

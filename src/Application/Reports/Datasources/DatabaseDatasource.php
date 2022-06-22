@@ -11,4 +11,13 @@ use Application\Interfaces\Reports\ReportDatasourceInterface;
 class DatabaseDatasource implements ReportDatasourceInterface
 {
 
+    public function __construct()
+    {
+
+    }
+
+    public function getData(): array
+    {
+        return [];
+    }
 }

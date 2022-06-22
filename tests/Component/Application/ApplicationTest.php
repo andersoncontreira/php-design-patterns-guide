@@ -1,16 +1,16 @@
 <?php
 
-namespace Application\Tests\Unit\Application;
+namespace Application\Tests\Component\Application;
 
 use Application\Application;
-use Application\Tests\Unit\AbstractUnitTestCase;
+use Application\Tests\Component\AbstractComponentTestCase;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
 /**
  *
  */
-class ApplicationTest extends AbstractUnitTestCase
+class ApplicationTest extends AbstractComponentTestCase
 {
     protected Application $instance;
 
@@ -35,6 +35,25 @@ class ApplicationTest extends AbstractUnitTestCase
         self::assertInstanceOf(Application::class, $app);
         self::assertTrue($app == $this->instance);
 
+    }
+
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
+    public function testGet()
+    {
+        $this->logger->info(
+            sprintf("Testing the method %s with parameters: %s", __METHOD__, null)
+        );
+
+        $config = $this->instance->get('config');
+        $log = $this->instance->get('log');
+        $db = $this->instance->get('db');
+
+        self::assertNotNull($config);
+        self::assertNotNull($log);
+        self::assertNotNull($db);
     }
 
 //    public function testBoot()

@@ -23,7 +23,7 @@
         </testsuite>
     </testsuites>
     <php>
-        <const name="APPLICATION_ENV" value="development"/>
-        <const name="APP_ENV" value="development"/>
+        <const name="APPLICATION_ENV" value="testing"/>
+        <const name="APP_ENV" value="testing"/>
     </php>
 </phpunit>

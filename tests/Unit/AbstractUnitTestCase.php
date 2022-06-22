@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Application\Tests\Unit;
 
-use Application\Caching\RedisCachingClient;
+use Application\Tests\Unit\Helpers\ConsoleLoggerHelper;
 use Monolog\Logger;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Doubler\DoubleInterface;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ProphecyInterface;
 use Psr\Container\ContainerInterface;
-use Application\Tests\Unit\Helpers\ConsoleLoggerHelper;
 
 /**
  * Class AbstractUnitTestCase
@@ -39,6 +38,7 @@ abstract class AbstractUnitTestCase extends TestCase
     {
         parent::setUp();
 
+        # TODO trocar para a Application
         /** @var ProphecyInterface|ContainerInterface $container */
         $container = $this->prophesize(ContainerInterface::class);
         /** Mocking  Logger */

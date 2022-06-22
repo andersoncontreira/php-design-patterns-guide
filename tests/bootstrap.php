@@ -8,7 +8,7 @@ use Psr\Container\ContainerInterface;
 define('APP_ROOT', dirname(__DIR__));
 
 //load env
-$dotenv = Dotenv::createMutable(APP_ROOT . DIRECTORY_SEPARATOR . 'env', 'development.env');
+$dotenv = Dotenv::createMutable(APP_ROOT . DIRECTORY_SEPARATOR . 'env', 'testing.env');
 $dotenv->load();
 
 
