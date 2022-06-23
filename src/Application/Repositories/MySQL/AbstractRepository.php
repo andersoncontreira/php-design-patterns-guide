@@ -5,6 +5,8 @@ declare(strict_types=1);
 
 namespace Application\Repositories\MySQL;
 
+use Application\Converters\EntityConverter;
+use Application\Entities\EntityInterface;
 use Illuminate\Database\DatabaseManager;
 use Monolog\Logger;
 
@@ -47,6 +49,11 @@ abstract class AbstractRepository implements RepositoryInterface
     {
     }
 
+    public function create(EntityInterface $entity)
+    {
+        // TODO: Implement create() method.
+    }
+
     public function list($where = null, $fields = null, $offset = null, $limit = null, $sortBy = null, $orderBy = null)
     {
 
@@ -79,6 +86,7 @@ abstract class AbstractRepository implements RepositoryInterface
         try {
             $cursor = $query->cursor();
             $result = $cursor->all();
+            $result = $this->convertList($result);
         } catch (\Exception $e) {
             $this->logger->error($e);
             $this->exception = $e;

@@ -15,7 +15,7 @@ Virtual Constructor
 
 ---
 
-### Project example
+### Example
 
 Bellow you can see a code snippet of the pattern.
 [php file sample](../../snippets/creational/factory-method.php)
@@ -27,7 +27,10 @@ Example of output:
 ```
 ```
 
----
+### Project example
+Bellow you can see a code snippet of the pattern.
+```php
+```
 
 
 ### References

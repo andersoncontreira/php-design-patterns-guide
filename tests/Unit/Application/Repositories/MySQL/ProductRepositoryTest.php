@@ -9,7 +9,6 @@ namespace Application\Tests\Unit\Application\Repositories\MySQL;
 use Application\Repositories\MySQL\ProductRepository;
 use Application\Tests\Unit\AbstractUnitTestCase;
 use Application\Tests\Unit\Mocks\Illuminate\Database\ConnectionMock;
-use Application\Tests\Unit\Mocks\Illuminate\Database\Connectors\ConnectionFactoryMock;
 use Application\Tests\Unit\Mocks\Illuminate\Database\DatabaseManagerMock;
 use Illuminate\Database\DatabaseManager;
 use Psr\Container\ContainerExceptionInterface;
@@ -62,7 +61,7 @@ class ProductRepositoryTest extends AbstractUnitTestCase
 
         $result = $this->instance->list($where, $fields, $offset, $limit, $sortBy, $orderBy);
 
-        //var_dump($result);
+        var_dump($result);
 
         self::assertNotNull($result);
         self::assertIsArray($result);
@@ -85,6 +84,10 @@ class ProductRepositoryTest extends AbstractUnitTestCase
         ];
     }
 
+    /**
+     * Sample Connection Result
+     * @return array
+     */
     private function getSampleData(): array
     {
         $jsonSampleFileData = file_get_contents(APP_ROOT . '/tests/Datasources/database/products/products.sample.json');

@@ -1,0 +1,24 @@
+<?php
+
+declare(strict_types=1);
+
+
+namespace Application\Entities;
+
+
+class CategoryEntity extends AbstractEntity
+{
+    /**
+     * Common fields
+     */
+    public int $active;
+    public \DateTime $createdAt;
+    public \DateTime $updatedAt;
+    public \DateTime $deleteddAt;
+    public string $uuid;
+
+    public function populate(array $data)
+    {
+        // TODO: Implement populate() method.
+    }
+}
