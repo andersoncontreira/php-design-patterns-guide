@@ -4,6 +4,6 @@ declare(strict_types=1);
 
 namespace Application\Caching;
 
-class MemcachedCachingClient
+class MemcachedCachingClient extends AbstractCachingClient
 {
 }

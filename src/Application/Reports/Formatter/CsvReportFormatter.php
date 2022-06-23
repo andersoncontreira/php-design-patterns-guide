@@ -8,13 +8,14 @@ namespace Application\Reports\Formatter;
 
 
 use Application\Reports\Interfaces\ReportFormatterInterface;
+use Application\Reports\ReportHelper;
 
 /**
  * Pattern Family: Creational
  * Pattern Name: AbstractFactory
  * Group: ReportFactory
  */
-class JsonReportFormatter implements ReportFormatterInterface
+class CsvReportFormatter implements ReportFormatterInterface
 {
 
     protected array $data;
@@ -26,7 +27,18 @@ class JsonReportFormatter implements ReportFormatterInterface
 
     public function format(): string
     {
-        return json_encode($this->data);
+        $keys = ReportHelper::getKeys($this->data);
+        $output = fopen("php://memory",'w');
+        fputcsv($output, $keys);
+        foreach($this->data as $item) {
+            fputcsv($output, $item);
+        }
+        rewind($output);
+        $content = stream_get_contents($output);
+        fclose($output);
+
+        return $content;
+
     }
 
     /**

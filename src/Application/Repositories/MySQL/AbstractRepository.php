@@ -5,9 +5,7 @@ declare(strict_types=1);
 
 namespace Application\Repositories\MySQL;
 
-use Application\Interfaces\RepositoryInterface;
 use Illuminate\Database\DatabaseManager;
-use Illuminate\Pagination\Cursor;
 use Monolog\Logger;
 
 /**

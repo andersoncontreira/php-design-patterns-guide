@@ -6,7 +6,8 @@ declare(strict_types=1);
 namespace Application\Reports\Datasources;
 
 
-use Application\Interfaces\Reports\ReportDatasourceInterface;
+
+use Application\Reports\Interfaces\ReportDatasourceInterface;
 
 class FileDatasource implements ReportDatasourceInterface
 {

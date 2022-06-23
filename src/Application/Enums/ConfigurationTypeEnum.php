@@ -3,10 +3,13 @@
 declare(strict_types=1);
 
 
-namespace Application\Configuration;
+namespace Application\Enums;
 
 
-class ConfigurationTypeEnum
+use Application\Configuration\ApplicationConfiguration;
+use Application\Configuration\DatabaseConfiguration;
+
+class ConfigurationTypeEnum extends AbstractEnum
 {
     const app = 'app';
     const database = 'database';

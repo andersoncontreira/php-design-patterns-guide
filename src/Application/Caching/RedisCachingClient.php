@@ -6,7 +6,7 @@ namespace Application\Caching;
 
 use Predis\Client;
 
-class RedisCachingClient
+class RedisCachingClient extends AbstractCachingClient
 {
     private Client $client;
 

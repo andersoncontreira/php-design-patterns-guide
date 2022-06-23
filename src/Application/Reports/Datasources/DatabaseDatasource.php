@@ -6,8 +6,10 @@ declare(strict_types=1);
 namespace Application\Reports\Datasources;
 
 
-use Application\Interfaces\Reports\ReportDatasourceInterface;
-use Application\Interfaces\RepositoryInterface;
+
+
+use Application\Reports\Interfaces\ReportDatasourceInterface;
+use Application\Repositories\MySQL\RepositoryInterface;
 
 class DatabaseDatasource implements ReportDatasourceInterface
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Interfaces;
+namespace Application\Repositories\MySQL;
 
 interface RepositoryInterface
 {

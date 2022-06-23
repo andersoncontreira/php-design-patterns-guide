@@ -6,7 +6,8 @@ declare(strict_types=1);
 namespace Application\Reports\Formatter;
 
 
-use Application\Interfaces\Reports\ReportFormatterInterface;
+
+use Application\Reports\Interfaces\ReportFormatterInterface;
 
 /**
  * Pattern Family: Creational
@@ -79,6 +80,14 @@ class XmlReportFormatter implements ReportFormatterInterface
                 $current->addChild($k, (string)$v);
             }
         }
+    }
+
+    /**
+     * @param array $data
+     */
+    public function setData(array $data): void
+    {
+        $this->data = $data;
     }
 
 }

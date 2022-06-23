@@ -4,6 +4,6 @@ declare(strict_types=1);
 
 namespace Application\Caching;
 
-abstract class AbstractCaching
+abstract class AbstractCachingClient
 {
 }

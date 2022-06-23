@@ -8,7 +8,7 @@ namespace Application\Tests\Unit\Mocks\Application;
 
 use Application\Application;
 use Application\Configuration\ApplicationConfiguration;
-use Application\Configuration\ConfigurationTypeEnum;
+use Application\Enums\ConfigurationTypeEnum;
 use Application\Configuration\DatabaseConfiguration;
 use Application\Logger\ConsoleLogger;
 use Application\Tests\Unit\Helpers\ConsoleLoggerHelper;

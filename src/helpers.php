@@ -34,3 +34,13 @@ if (! function_exists('database_path')) {
         return app()->databasePath($path);
     }
 }
+
+if (! function_exists('to_array')) {
+    function to_array($item)
+    {
+        if (!is_array($item)) {
+            $item = json_decode(json_encode($item), true);
+        }
+        return $item;
+    }
+}

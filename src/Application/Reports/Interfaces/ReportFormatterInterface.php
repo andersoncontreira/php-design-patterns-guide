@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Interfaces\Reports;
+namespace Application\Reports\Interfaces;
 
 interface ReportFormatterInterface
 {

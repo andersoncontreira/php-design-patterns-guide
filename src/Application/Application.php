@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace Application;
 
 use Application\Configuration\AbstractConfiguration;
-use Application\Configuration\ConfigurationTypeEnum;
-use Application\Configuration\DatabaseConfiguration;
+use Application\Enums\ConfigurationTypeEnum;
 use Application\Logger\ConsoleLogger;
 use Illuminate\Config\Repository as ConfigRepository;
 use Illuminate\Container\Container;
