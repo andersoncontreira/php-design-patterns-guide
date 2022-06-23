@@ -6,7 +6,7 @@ namespace Application\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class ConfigurationProvider extends ServiceProvider
+class ValidatorsProvider extends ServiceProvider
 {
     public function register()
     {
