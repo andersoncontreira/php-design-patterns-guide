@@ -75,7 +75,7 @@ print($out . PHP_EOL);
 
 ```
 
-[php file sample](../../snippets/creational/factory-method.php)
+[php file sample](../../snippets/creational/abstract-factory.php)
 
 > Obs: You can run it, executing the project clone.
 
