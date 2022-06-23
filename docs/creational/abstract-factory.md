@@ -23,10 +23,6 @@ KIT
 
 Bellow you can see a code snippet of the pattern.
 
-PHP file example:
-
-<iframe src="../../snippets/creational/abstract-factory.php" seamless></iframe>
-
 ```php
 <?php
 
