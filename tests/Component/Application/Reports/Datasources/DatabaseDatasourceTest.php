@@ -8,19 +8,27 @@ namespace Application\Tests\Component\Application\Reports\Datasources;
 
 
 use Application\Reports\Datasources\DatabaseDatasource;
-use Application\Repositories\ProductRepository;
+use Application\Repositories\MySQL\ProductRepository;
 use Application\Tests\Component\AbstractComponentTestCase;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 class DatabaseDatasourceTest extends AbstractComponentTestCase
 {
 
     protected DatabaseDatasource $instance;
-    protected $connection;
+    protected $manager;
+    protected ProductRepository $repository;
 
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
     public function setUp(): void
     {
         parent::setUp();
-        $this->connection = $this->container->get('db');
+        $this->manager = $this->container->get('db');
+        $this->repository = $this->container->get(ProductRepository::class);
     }
 
     public function testGetData()
@@ -29,11 +37,7 @@ class DatabaseDatasourceTest extends AbstractComponentTestCase
             sprintf("Testing the method %s with parameters: %s", __METHOD__, null)
         );
 
-        $sampleFile = APP_ROOT . '/tests/Datasources/reports/datasources/books.datasource.json';
-
-        $repository = new ProductRepository();
-
-        $this->instance = new DatabaseDatasource($repository);
+        $this->instance = new DatabaseDatasource($this->repository);
         $data = $this->instance->getData();
         self::assertIsArray($data);
     }

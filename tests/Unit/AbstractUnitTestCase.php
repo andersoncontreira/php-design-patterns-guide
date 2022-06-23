@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 namespace Application\Tests\Unit;
 
-use Application\Tests\Unit\Helpers\ConsoleLoggerHelper;
+use Application\Tests\Unit\Mocks\Application\ApplicationMock;
+use Illuminate\Container\Container;
 use Monolog\Logger;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Doubler\DoubleInterface;
 use Prophecy\PhpUnit\ProphecyTrait;
-use Prophecy\Prophecy\ProphecyInterface;
+use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 /**
  * Class AbstractUnitTestCase
@@ -32,24 +34,16 @@ abstract class AbstractUnitTestCase extends TestCase
     protected $container;
 
     /**
-     * @return void
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
      */
     public function setUp(): void
     {
         parent::setUp();
 
-        # TODO trocar para a Application
-        /** @var ProphecyInterface|ContainerInterface $container */
-        $container = $this->prophesize(ContainerInterface::class);
-        /** Mocking  Logger */
-        try {
-            $container->get(Logger::class)->willReturn(ConsoleLoggerHelper::getLogger());
-            $this->container = $container->reveal();
+        $this->container = (new ApplicationMock())->getObjectWithMockDependencies();
 
-            $this->logger = $this->container->get(Logger::class);
-        } catch (\Throwable $e) {
-            $this->logger = ConsoleLoggerHelper::getLogger();
-        }
+        $this->logger = $this->container->get(Logger::class);
 
     }
 

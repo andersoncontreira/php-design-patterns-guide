@@ -7,17 +7,20 @@ namespace Application\Reports\Datasources;
 
 
 use Application\Interfaces\Reports\ReportDatasourceInterface;
+use Application\Interfaces\RepositoryInterface;
 
 class DatabaseDatasource implements ReportDatasourceInterface
 {
+    protected RepositoryInterface $repository;
 
-    public function __construct()
+    public function __construct(RepositoryInterface $repository)
     {
-
+        $this->repository = $repository;
     }
 
     public function getData(): array
     {
-        return [];
+        //$where = null, $fields = null, $offset=null, $limit=null, $sortBy=null, $orderBy=null
+        return $this->repository->list();
     }
 }

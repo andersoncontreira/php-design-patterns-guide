@@ -12,6 +12,11 @@ abstract class AbstractConfiguration implements ConfigurationInterface
 {
     protected array $configuration = [];
 
+    public static function getConfigurationArray(): array
+    {
+        return (new static())->getConfiguration();
+    }
+
     public function getConfiguration(): array
     {
         return $this->configuration;

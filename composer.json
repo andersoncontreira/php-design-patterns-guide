@@ -62,7 +62,10 @@
   "autoload-dev": {
     "psr-4": {
       "Application\\Tests\\": "tests/"
-    }
+    },
+    "files": [
+      "src/helpers.php"
+    ]
   },
   "scripts": {
     "check": [
