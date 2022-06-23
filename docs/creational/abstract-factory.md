@@ -1,7 +1,5 @@
 # Abstract Factory
 
----
-
 The abstract factory pattern provides a way to encapsulate a group of individual factories that have a common theme without specifying their concrete classes.
 In normal usage, the client software creates a concrete implementation of the abstract factory and then uses the generic interface of the factory to create the concrete objects that are part of the theme.
 The client does not know (or care) which concrete objects it gets from each of these internal factories, since it uses only the generic interfaces of their products.
@@ -17,10 +15,19 @@ KIT
 ### Samples
 Add diagram here
 
+
+---
+
 ### Project example
+
+---
+
 
 ### References
 - https://sourcemaking.com/design_patterns/abstract_factory
 - https://java-design-patterns.com/patterns/abstract-factory
+
+
+---
 
 [Return to README.md](../../README.md)

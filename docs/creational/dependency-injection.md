@@ -48,3 +48,35 @@ Container is dependency injection container. It allows you to implement the depe
 - https://laravel.com/api/5.8/Illuminate/Container/Container.html
 - https://laravel.com/api/5.8/Illuminate/Support/ServiceProvider.html
 - https://container.thephpleague.com/4.x/
+
+
+
+Description
+
+> More details: [Wiki](#)
+
+### Also known as
+A.K.A
+
+### Intent
+> intent.
+
+### Samples
+Add diagram here
+
+
+---
+
+### Project example
+
+---
+
+
+### References
+- https://sourcemaking.com/design_patterns/?
+- https://java-design-patterns.com/patterns/?
+
+
+---
+
+[Return to README.md](../../README.md)
