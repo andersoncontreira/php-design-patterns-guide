@@ -46,7 +46,7 @@ Project containing real examples of design patterns, contain a guide to help the
      - [Dependency injection](./docs/creational/dependency-injection.md) 
      - [Value object](./docs/creational/value-object.md) 
 5. Functional
-   - --
+   - There are no examples yet
 6. Structural
    - [Adapter](#)
    - [Bridge](#)
