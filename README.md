@@ -7,7 +7,7 @@ Project containing real examples of design patterns, contain a guide to help the
 ## Table of contents
 
 1. Architectural
-- [Repository](#repository)
+- [Repository](./docs/architectural/repository.md)
 2. Behavioral
 -
 3. Concurrency
