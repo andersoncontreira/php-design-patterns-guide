@@ -73,7 +73,11 @@ class ObjectUtils
             if (array_key_exists($name, $data)) {
                 // not null
                 if ($data[$name]) {
-                    $property->setValue($object, $data[$name]);
+                    try {
+                        $property->setValue($object, $data[$name]);
+                    } catch (\Throwable $e) {
+                        //TODO recuperar erros
+                    }
                 }
 
             }

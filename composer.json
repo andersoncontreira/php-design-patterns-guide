@@ -17,7 +17,9 @@
     "illuminate/container": "^8.83",
     "illuminate/database": "^8.83",
     "illuminate/pagination": "^8.83",
+    "league/config": "^1.1",
     "monolog/monolog": "^2.7",
+    "nesbot/carbon": "^2.58",
     "php-middleware/request-id": "^4.0",
     "phpspec/prophecy-phpunit": "^2.0",
     "predis/predis": "^1.1",
@@ -35,8 +37,7 @@
     "tuupola/cors-middleware": "^1.1",
     "tuupola/slim-jwt-auth": "^3.4",
     "vlucas/phpdotenv": "^5.4.1",
-    "zircote/swagger-php": "^3.0",
-    "league/config": "^1.1"
+    "zircote/swagger-php": "^3.0"
   },
   "require-dev": {
     "phpunit/phpunit": "9.5.x-dev",

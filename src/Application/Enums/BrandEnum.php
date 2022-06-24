@@ -9,4 +9,5 @@ namespace Application\Enums;
 class BrandEnum extends AbstractEnum
 {
 
+    const MASTERCARD = 'master';
 }

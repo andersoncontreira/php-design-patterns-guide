@@ -12,7 +12,7 @@ class ValidatorsProvider extends ServiceProvider
     {
         // aliases
         // factories
-        //singleton
+        // singleton
     }
 
     public function boot()

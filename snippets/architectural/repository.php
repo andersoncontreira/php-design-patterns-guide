@@ -14,11 +14,13 @@ $repository = $container->get(ProductRepository::class);
 $conveter = new EntityConverter(ProductEntity::class);
 
 $pencilData = file_get_contents(APP_ROOT . '/samples/common/entities/pencil.product.json');
-$pencilVo = new ProductValueObject(json_decode($pencilData, true));
+$pencilVo = new ProductValueObject();
+$pencilVo->populate(json_decode($pencilData, true));
 $pencil = $conveter->convertFromVo($pencilVo);
 
 $penData = file_get_contents(APP_ROOT . '/samples/common/entities/pen.product.json');
-$penVo = new ProductValueObject(json_decode($penData, true));
+$penVo = new ProductValueObject();
+$penVo->populate(json_decode($penData, true));
 $pen = $conveter->convertFromVo($pencilVo);
 
 

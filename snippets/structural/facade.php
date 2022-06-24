@@ -10,7 +10,8 @@ use Application\ValueObjects\ProductValueObject;
 $container = new Application\Application(APP_ROOT);
 
 $pencilData = file_get_contents(APP_ROOT . '/samples/common/entities/pencil.product.json');
-$pencilVo = new ProductValueObject(json_decode($pencilData, true));
+$pencilVo = new ProductValueObject();
+$pencilVo->populate(json_decode($pencilData, true));
 
 $facade = new ProductManagerFacade($container);
 /** @var ProductEntity $entity */

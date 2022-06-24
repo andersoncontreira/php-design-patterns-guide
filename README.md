@@ -35,7 +35,7 @@ Project containing real examples of design patterns, contain a guide to help the
 4. Creational
    1. Main patterns
       - [Abstract factory](./docs/creational/abstract-factory.md)
-      - [Builder]
+      - [Builder](./docs/creational/builder.md)
       - [Factory]
       - [Factory method](./docs/creational/factory-method.md)
       - [Object pool]

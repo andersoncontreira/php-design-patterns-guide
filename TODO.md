@@ -12,3 +12,8 @@ https://java-design-patterns.com/patterns/
 https://sourcemaking.com/design_patterns
 https://phpunit.readthedocs.io/en/9.5/assertions.html
 https://github.com/shivammathur/setup-php/blob/master/.github/workflows/php.yml
+
+
+# todo 
+fazer uma integração com uma api publica externa para os tests de integração
+xml, json (feed rss algo assim)

@@ -3,12 +3,10 @@
 declare(strict_types=1);
 
 
-namespace Application\Entities;
+namespace Application\ValueObjects;
 
 
-use Application\Utils\ObjectUtils;
-
-class LocationEntity  extends AbstractEntity
+class LocationValueObject extends AbstractValueObject
 {
     public string $street;
     public string $city;
@@ -19,9 +17,8 @@ class LocationEntity  extends AbstractEntity
      * Common fields
      */
     public int $active;
-    public \DateTime $createdAt;
-    public \DateTime $updatedAt;
-    public \DateTime $deleteddAt;
+    public string $createdAt;
+    public string $updatedAt;
+    public string $deleteddAt;
     public string $uuid;
-
 }

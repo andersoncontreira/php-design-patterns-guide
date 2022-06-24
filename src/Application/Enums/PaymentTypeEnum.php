@@ -9,4 +9,5 @@ namespace Application\Enums;
 class PaymentTypeEnum extends AbstractEnum
 {
 
+    const CREDIT_CARD = 'creditcard';
 }

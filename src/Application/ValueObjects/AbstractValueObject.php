@@ -10,13 +10,6 @@ use Application\Utils\ObjectUtils;
 
 abstract class AbstractValueObject implements ValueObjectInterface
 {
-    /**
-     * @throws \ReflectionException
-     */
-    public function __construct(array $data = null)
-    {
-        $this->populate($data);
-    }
 
     /**
      * @throws \ReflectionException

@@ -19,6 +19,7 @@ use Application\Services\V1\Product\UpdateProductService;
 use Application\Validators\CreateProductValidator;
 use Application\ValueObjects\ProductValueObject;
 
+# TODO need to be migrated to facade folder
 class ProductManagerFacade implements FacadeInterface
 {
     protected CreateProductValidator $validator;
