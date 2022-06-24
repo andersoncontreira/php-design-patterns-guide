@@ -8,7 +8,7 @@ namespace Application\Entities;
 
 use ReflectionClass;
 
-class ProductEntity  extends AbstractEntity
+class ProductEntity extends AbstractEntity implements EntityInterface
 {
     public int $id;
     public string $name;

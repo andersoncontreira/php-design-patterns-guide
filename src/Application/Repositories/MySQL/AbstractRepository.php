@@ -49,9 +49,10 @@ abstract class AbstractRepository implements RepositoryInterface
     {
     }
 
-    public function create(EntityInterface $entity)
+    public function create(EntityInterface $entity):bool
     {
-        // TODO: Implement create() method.
+
+        return true;
     }
 
     public function list($where = null, $fields = null, $offset = null, $limit = null, $sortBy = null, $orderBy = null)

@@ -9,7 +9,7 @@ Project containing real examples of design patterns, contain a guide to help the
 1. Architectural
    1. Data access
       - [Repository](./docs/architectural/repository.md)
-      - [Service layer](#)
+      - [Service layer](./docs/architectural/service-layer.md)
    2. Performance
       - [CQRS](#)
 2. Behavioral
@@ -52,6 +52,7 @@ Project containing real examples of design patterns, contain a guide to help the
    - [Bridge](#)
    - [Composite](#)
    - [Decorator](#)
+   - [Facade](./docs/structural/facade.md)
    - [Flyweight](#)
 7. Tests Strategies
    1. Main types 
@@ -85,3 +86,4 @@ Project containing real examples of design patterns, contain a guide to help the
 - https://java-design-patterns.com/patterns/dependency-injection/
 - https://www.atlassian.com/continuous-delivery/software-testing/types-of-software-testing
 - https://www.applause.com/blog/functional-testing-types-examples
+- https://www.eventhelix.com/design-patterns

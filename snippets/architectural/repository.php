@@ -2,22 +2,33 @@
 
 require_once '../../tests/bootstrap.php';
 
+use Application\Converters\EntityConverter;
 use Application\Entities\ProductEntity;
 use Application\Repositories\MySQL\ProductRepository;
+use Application\ValueObjects\ProductValueObject;
 
 $container = new Application\Application(APP_ROOT);
 
 /** @var ProductRepository $repository */
 $repository = $container->get(ProductRepository::class);
+$conveter = new EntityConverter(ProductEntity::class);
 
 $pencilData = file_get_contents(APP_ROOT . '/samples/common/entities/pencil.product.json');
-$pencil = new ProductEntity(json_decode($pencilData, true));
+$pencilVo = new ProductValueObject(json_decode($pencilData, true));
+$pencil = $conveter->convertFromVo($pencilVo);
 
 $penData = file_get_contents(APP_ROOT . '/samples/common/entities/pen.product.json');
-$pen = new ProductEntity(json_decode($penData, true));
+$penVo = new ProductValueObject(json_decode($penData, true));
+$pen = $conveter->convertFromVo($pencilVo);
 
-$repository->create($pencil);
-$repository->create($pen);
+
+$created = $repository->create($pencil);
+$created = $created ? 'true': 'false';
+print('created: ' . $created . PHP_EOL);
+
+$created = $repository->create($pen);
+$created = $created ? 'true': 'false';
+print('created: ' . $created . PHP_EOL);
 
 $where = null;
 $fields = null;

@@ -7,10 +7,16 @@ namespace Application\ValueObjects;
 
 
 use Application\Utils\ObjectUtils;
-use ReflectionClass;
 
 abstract class AbstractValueObject implements ValueObjectInterface
 {
+    /**
+     * @throws \ReflectionException
+     */
+    public function __construct(array $data = null)
+    {
+        $this->populate($data);
+    }
 
     /**
      * @throws \ReflectionException
