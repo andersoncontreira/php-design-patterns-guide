@@ -85,8 +85,11 @@ Project containing real examples of design patterns, contain a guide to help the
 - https://thephpleague.com/
 - https://java-design-patterns.com/patterns/
 - https://java-design-patterns.com/patterns/dependency-injection/
-- https://www.atlassian.com/continuous-delivery/software-testing/types-of-software-testing
 - https://www.eventhelix.com/design-patterns
 - https://deviq.com/design-patterns/design-patterns-overview
+- https://sourcemaking.com/design_patterns
+- https://java-design-patterns.com/patterns
+- https://refactoring.guru/design-patterns
 - https://www.applause.com/blog/functional-testing-types-examples
 - https://martinfowler.com/articles/microservice-testing/
+- https://www.atlassian.com/continuous-delivery/software-testing/types-of-software-testing
