@@ -36,11 +36,17 @@ $orderSummary = $orderSummaryBuilder->setOrderNumber(123456789)
     ->setInstallments(3);
 
 try {
-    $orderSummary->build();
-    var_dump($orderSummary);
+    $order = $orderSummary->build();
+    var_dump($order);
 } catch (ReflectionException $e) {
     exit($e->getMessage());
 }
 
 
+// LocationBuilder (CEP)
+// request -> controller -> vo -> service -> entity -> repository -> db
+// db -> repository -> entity[] -> service -> vo -> controller -> user
+// db ->repository -> entity[] -> service -> vo -> CLI -> user
+// category
 
+// EnymeBuilder()->nivel(15)->weapon(SwordEnum::DARK_SWORD)->

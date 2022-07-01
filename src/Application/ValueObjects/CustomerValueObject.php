@@ -46,6 +46,30 @@ class CustomerValueObject extends AbstractValueObject
             $location->populate($data['location']);
             $this->location = $location;
         }
+
+        //TODO melhorar
+        if (array_key_exists('name', $data)) {
+            $name_array = $data['name'];
+            $size = count($name_array);
+
+            $title = '';
+            $firstName = '';
+            $lastName = '';
+            if (array_key_exists(0, $name_array)) {
+                $firstName = $name_array[0];
+                if ($size > 1) {
+                    $lastName = $name_array[$size-1];
+                }
+            } else if (array_key_exists('first', $name_array)){
+                $title = $data['name']['title'];
+                $firstName = $data['name']['first'];
+                $lastName = $data['name']['last'];
+            }
+
+            $this->title = $title;
+            $this->firstName = $firstName;
+            $this->lastName = $lastName;
+        }
     }
 
 }

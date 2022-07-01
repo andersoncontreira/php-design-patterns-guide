@@ -36,15 +36,15 @@ Project containing real examples of design patterns, contain a guide to help the
    1. Main patterns
       - [Abstract factory](./docs/creational/abstract-factory.md)
       - [Builder](./docs/creational/builder.md)
-      - [Factory]
+      - [Factory](./docs/creational/factory.md)
       - [Factory method](./docs/creational/factory-method.md)
       - [Object pool]
       - [Prototype]
       - [Singleton]
    2. Other patterns
-     - [Converter]
+     - [Converter](./docs/creational/converter.md)
      - [Dependency injection] 
-     - [Value object] 
+     - [Value object](./docs/creational/value-object.md) 
 5. Functional
    - There are no examples yet
 6. Structural

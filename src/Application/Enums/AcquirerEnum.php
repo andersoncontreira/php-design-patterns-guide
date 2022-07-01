@@ -8,5 +8,6 @@ namespace Application\Enums;
 
 class AcquirerEnum extends AbstractEnum
 {
-
+    const CIELO = 'cielo';
+    const PAYPAL = 'paypal';
 }

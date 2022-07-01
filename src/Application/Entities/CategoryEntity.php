@@ -17,8 +17,4 @@ class CategoryEntity extends AbstractEntity
     public \DateTime $deleteddAt;
     public string $uuid;
 
-    public function populate(array $data)
-    {
-        // TODO: Implement populate() method.
-    }
 }

@@ -16,7 +16,9 @@ abstract class AbstractEntity implements EntityInterface
      */
     public function __construct(array $data = null)
     {
-        $this->populate($data);
+        if ($data != null) {
+            $this->populate($data);
+        }
     }
 
     /**
@@ -24,7 +26,7 @@ abstract class AbstractEntity implements EntityInterface
      */
     public function populate(array $data = null)
     {
-        if ($data) {
+        if ($data != null) {
             ObjectUtils::populate($this, $data);
         }
     }

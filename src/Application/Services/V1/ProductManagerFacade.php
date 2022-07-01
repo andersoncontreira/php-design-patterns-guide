@@ -47,6 +47,7 @@ class ProductManagerFacade implements FacadeInterface
         $result = false;
         try {
 
+            //TODO melhorar via construtor e com injeção
             $this->createService->setConverter($this->entityConverter);
             $this->createService->setValueObject($valueObject);
 

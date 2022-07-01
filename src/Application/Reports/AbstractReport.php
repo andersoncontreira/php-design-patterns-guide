@@ -17,6 +17,7 @@ use Application\Reports\Interfaces\ReportFactoryInterface;
 abstract class AbstractReport {
     protected ReportDatasourceInterface $datasource;
     protected array $data;
+    # TODO Converter para um factory de fato
     protected array $factoryMap = [
         ReportTypeEnum::json => JsonReportFactory::class,
         ReportTypeEnum::xml => XmlReportFactory::class,

@@ -112,7 +112,7 @@ Bellow you can see a code snippet of the pattern.
 - https://en.wikipedia.org/wiki/Abstract_factory_pattern
 - https://sourcemaking.com/design_patterns/abstract_factory
 - https://java-design-patterns.com/patterns/abstract-factory
-- https://refactoring.guru/pt-br/design-patterns/abstract-factory
+- https://refactoring.guru/design-patterns/abstract-factory
 
 ---
 
