@@ -11,9 +11,14 @@ use Illuminate\Config\Repository as ConfigRepository;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Database\DatabaseServiceProvider;
+use Illuminate\Http\Request;
 use Illuminate\Pagination\PaginationServiceProvider;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Lumen\Concerns\RegistersExceptionHandlers;
+use Laravel\Lumen\Concerns\RoutesRequests;
+use Laravel\Lumen\Routing\Router;
 use Monolog\Logger;
+use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
 /**
  * Pattern Family: Creational
@@ -22,8 +27,8 @@ use Monolog\Logger;
  */
 class Application extends Container
 {
-//    use Concerns\RoutesRequests,
-//        Concerns\RegistersExceptionHandlers;
+    use RoutesRequests,
+        RegistersExceptionHandlers;
     /**
      * The base path of the application installation.
      *
@@ -53,6 +58,13 @@ class Application extends Container
     protected $loadedProviders = [];
 
     /**
+     * The Router instance.
+     *
+     * @var \Laravel\Lumen\Routing\Router
+     */
+    public $router;
+
+    /**
      * Create a new Application instance.
      *
      * @param string|null $basePath
@@ -64,8 +76,8 @@ class Application extends Container
         $this->basePath = $basePath;
 
         $this->bootstrapContainer();
-//        $this->registerErrorHandling();
-//        $this->bootstrapRouter();
+        $this->registerErrorHandling();
+        $this->bootstrapRouter();
 
         $this->registerConfigBindings();
         $this->registerDatabaseBindings();
@@ -101,7 +113,7 @@ class Application extends Container
      */
     public function bootstrapRouter()
     {
-//        $this->router = new Router($this);
+        $this->router = new Router($this);
     }
 
     /**
@@ -333,12 +345,34 @@ class Application extends Container
     {
         $this->aliases = [
             'log' => Logger::class,
+            'request' => \Illuminate\Http\Request::class,
             \Illuminate\Contracts\Foundation\Application::class => 'app',
             \Illuminate\Container\Container::class => 'app',
             \Illuminate\Contracts\Container\Container::class => 'app',
             \Illuminate\Database\ConnectionResolverInterface::class => 'db',
             \Illuminate\Database\DatabaseManager::class => 'db',
         ];
+    }
+
+    /**
+     * Prepare the given request instance for use with the application.
+     *
+     * @param  \Symfony\Component\HttpFoundation\Request $request
+     * @return \Illuminate\Http\Request
+     */
+    protected function prepareRequest(SymfonyRequest $request)
+    {
+        if (! $request instanceof Request) {
+            $request = Request::createFromBase($request);
+        }
+
+        $request->setUserResolver(function ($guard = null) {
+            return $this->make('auth')->guard($guard)->user();
+        })->setRouteResolver(function () {
+            return $this->currentRoute;
+        });
+
+        return $request;
     }
 
 }
