@@ -30,31 +30,34 @@ Project containing real examples of design patterns, contain a guide to help the
       - [Mediator]
       - [Pipeline]
       - [Circuit breaker]
-3. Concurrency
+3. Cloud
+   - [Health Check Pattern]
+   - <s>Claim Check Pattern</s> (Does not apply to this project)
+4. Concurrency
    - [Saga]
-4. Creational
+5. Creational
    1. Main patterns
       - [Abstract factory](./docs/creational/abstract-factory.md)
       - [Builder](./docs/creational/builder.md)
       - [Factory](./docs/creational/factory.md)
       - [Factory method](./docs/creational/factory-method.md)
-      - [Object pool]
-      - [Prototype]
-      - [Singleton]
+      - <s>Object pool</s> (Does not apply to this project)
+      - <s>Prototype</s> (Does not apply to this project)
+      - [Singleton](./docs/creational/singleton.md)
    2. Other patterns
      - [Converter](./docs/creational/converter.md)
      - [Dependency injection] 
      - [Value object](./docs/creational/value-object.md) 
-5. Functional
+6. Functional
    - There are no examples yet
-6. Structural
+7. Structural
    - [Adapter]
    - [Bridge]
    - [Composite]
    - [Decorator]
    - [Facade](./docs/structural/facade.md)
    - [Flyweight]
-7. Tests Strategies
+8. Tests Strategies
    1. Main types 
       - [Unit](#)
       - [Integration](#)
@@ -84,7 +87,7 @@ Project containing real examples of design patterns, contain a guide to help the
 ## References
 - https://thephpleague.com/
 - https://java-design-patterns.com/patterns/
-- https://java-design-patterns.com/patterns/dependency-injection/
+- https://docs.microsoft.com/pt-br/azure/architecture/patterns/
 - https://www.eventhelix.com/design-patterns
 - https://deviq.com/design-patterns/design-patterns-overview
 - https://sourcemaking.com/design_patterns

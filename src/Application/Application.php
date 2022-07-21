@@ -11,6 +11,7 @@ use Illuminate\Config\Repository as ConfigRepository;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Database\DatabaseServiceProvider;
+use Illuminate\Events\EventServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\PaginationServiceProvider;
 use Illuminate\Support\ServiceProvider;
@@ -81,6 +82,7 @@ class Application extends Container
 
         $this->registerConfigBindings();
         $this->registerDatabaseBindings();
+        $this->registerEventBindings();
 
     }
 
@@ -373,6 +375,20 @@ class Application extends Container
         });
 
         return $request;
+    }
+
+    /**
+     * Register container bindings for the application.
+     *
+     * @return void
+     */
+    protected function registerEventBindings()
+    {
+        $this->singleton('events', function () {
+            $this->register(EventServiceProvider::class);
+
+            return $this->make('events');
+        });
     }
 
 }

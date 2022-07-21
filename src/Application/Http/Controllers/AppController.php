@@ -5,6 +5,11 @@ declare(strict_types=1);
 
 namespace Application\Http\Controllers;
 
+use Application\Caching\RedisCachingClient;
+use Application\Facades\HealthCheckManagerFacade;
+use Application\Logger\ConsoleLogger;
+use Application\Services\HealthCheck\HealthCheckService;
+use Illuminate\Database\DatabaseManager;
 use Illuminate\Http\JsonResponse;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
@@ -19,8 +24,16 @@ class AppController extends BaseController
 
     public function alive(): JsonResponse
     {
-        //TODO implementar health check inteligente
-        return response()->json(['app' => "I'm alive!"]);
+        //return response()->json(['app' => "I'm alive!"]);
+        /** @var HealthCheckManagerFacade $manager */
+        //TODO
+        $manager = app()->get(HealthCheckManagerFacade::class);
+//        $logger = new ConsoleLogger(APP_NAME);
+//        $cachingClient = new RedisCachingClient();
+//        $databaseManager = app()->get('db');
+//        $healthCheckService = new HealthCheckService($logger);
+//        $manager = new HealthCheckManagerFacade($logger,  $cachingClient,  $databaseManager, $healthCheckService);
+        return $manager->check();
     }
 
 }

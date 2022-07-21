@@ -7,6 +7,7 @@ namespace Application\Repositories\MySQL;
 
 use Application\Converters\EntityConverter;
 use Application\Entities\EntityInterface;
+use Application\Utils\Pagination;
 use Illuminate\Database\DatabaseManager;
 use Monolog\Logger;
 
@@ -17,8 +18,7 @@ use Monolog\Logger;
  */
 abstract class AbstractRepository implements RepositoryInterface
 {
-    const LIMIT = 10;
-    const OFFSET = 0;
+
 
     protected DatabaseManager $manager;
     protected Logger $logger;
@@ -59,11 +59,11 @@ abstract class AbstractRepository implements RepositoryInterface
     {
 
         if ($limit == null) {
-            $limit = self::LIMIT;
+            $limit = Pagination::LIMIT;
         }
 
         if ($offset == null) {
-            $offset = self::OFFSET;
+            $offset = Pagination::OFFSET;
         }
 
         if ($fields == null) {

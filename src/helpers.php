@@ -44,3 +44,10 @@ if (! function_exists('to_array')) {
         return $item;
     }
 }
+
+if (! function_exists('get_environment')) {
+    function get_environment()
+    {
+        return env('APP_ENV', 'development');
+    }
+}

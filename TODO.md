@@ -17,3 +17,8 @@ https://github.com/shivammathur/setup-php/blob/master/.github/workflows/php.yml
 # todo 
 fazer uma integração com uma api publica externa para os tests de integração
 xml, json (feed rss algo assim)
+
+Address/ZipCode
+https://viacep.com.br/ws/01001000/json/
+
+

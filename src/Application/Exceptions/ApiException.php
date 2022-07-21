@@ -6,7 +6,9 @@ declare(strict_types=1);
 namespace Application\Exceptions;
 
 
-class FactoryException
+use Throwable;
+
+class ApiException extends CustomException
 {
 
 }

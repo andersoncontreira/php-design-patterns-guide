@@ -3,23 +3,22 @@
 declare(strict_types=1);
 
 
-namespace Application\Services\V1;
+namespace Application\Facades\V1;
 
 
 use Application\Application;
 use Application\Converters\EntityConverter;
 use Application\Entities\ProductEntity;
 use Application\Exceptions\CustomException;
+use Application\Facades\FacadeInterface;
 use Application\Repositories\MySQL\ProductRepository;
 use Application\Repositories\Redis\ProductRepository as RedisProductRepository;
-use Application\Services\FacadeInterface;
 use Application\Services\ServiceInterface;
 use Application\Services\V1\Product\CreateProductService;
 use Application\Services\V1\Product\UpdateProductService;
 use Application\Validators\CreateProductValidator;
 use Application\ValueObjects\ProductValueObject;
 
-# TODO need to be migrated to facade folder
 class ProductManagerFacade implements FacadeInterface
 {
     protected CreateProductValidator $validator;
