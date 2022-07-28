@@ -1,0 +1,23 @@
+{
+  "status": "healthy",
+  "total_duration": 0,
+  "entries": [
+    {
+      "mysql": {
+        "status": "healthy",
+        "duration": 0,
+        "tags": [
+          "db",
+          "rw"
+        ]
+      },
+      "redis": {
+        "status": "healthy",
+        "duration": 0,
+        "tags": [
+          "cache"
+        ]
+      }
+    }
+  ]
+}

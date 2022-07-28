@@ -5,16 +5,24 @@ declare(strict_types=1);
 
 namespace Application\Http\Controllers;
 
-use Application\Caching\RedisCachingClient;
+use Application\Enums\HealthStatus;
 use Application\Facades\HealthCheckManagerFacade;
-use Application\Logger\ConsoleLogger;
-use Application\Services\HealthCheck\HealthCheckService;
-use Illuminate\Database\DatabaseManager;
+use Application\HealthCheck\HealthCheckResponse;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Http\JsonResponse;
-use Laravel\Lumen\Routing\Controller as BaseController;
+use Monolog\Logger;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
-class AppController extends BaseController
+/**
+ * Base API Controller
+ * Contains the root path and alive check
+ */
+class AppController extends AbstractController
 {
+    /**
+     * @return JsonResponse
+     */
     public function index(): JsonResponse
     {
         $APP_NAME = APP_NAME;
@@ -22,18 +30,26 @@ class AppController extends BaseController
         return response()->json(['app' => "${APP_NAME}:${APP_VERSION}"]);
     }
 
+    /**
+     * @return JsonResponse
+     * @throws BindingResolutionException
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
     public function alive(): JsonResponse
     {
-        //return response()->json(['app' => "I'm alive!"]);
         /** @var HealthCheckManagerFacade $manager */
-        //TODO
-        $manager = app()->get(HealthCheckManagerFacade::class);
-//        $logger = new ConsoleLogger(APP_NAME);
-//        $cachingClient = new RedisCachingClient();
-//        $databaseManager = app()->get('db');
-//        $healthCheckService = new HealthCheckService($logger);
-//        $manager = new HealthCheckManagerFacade($logger,  $cachingClient,  $databaseManager, $healthCheckService);
-        return $manager->check();
+        try {
+            $manager = app()->get(HealthCheckManagerFacade::class);
+            return $manager->check();
+        } catch (\Throwable $e) {
+            $this->logger->error($e);
+            $response = new HealthCheckResponse($this->logger);
+            $response->setException($e);
+            $response->setStatusCode(503);
+            $response->setStatus(HealthStatus::UNHEALTHY);
+            return $response->getResponse();
+        }
     }
 
 }

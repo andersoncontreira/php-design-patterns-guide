@@ -256,4 +256,12 @@ class ApiResponse
         $this->meta[$meta['name']] = $value;
     }
 
+    /**
+     * @param int $statusCode
+     */
+    public function setStatusCode(int $statusCode): void
+    {
+        $this->statusCode = $statusCode;
+    }
+
 }

@@ -58,11 +58,23 @@ class HealthCheckResponse extends ApiResponse
             "entries" => $this->entries
         ];
 
+        if ($this->exception && get_environment() == 'development') {
+            $body['trace'] = $this->exception->getTraceAsString();
+        }
+
         if (in_array('Content-Type', array_keys($headers)) && $headers['Content-Type'] == 'application/json') {
             return response()->json($body, $this->statusCode, $this->headers);
         } else {
             return response($body, $this->statusCode, $this->headers);
         }
 
+    }
+
+    /**
+     * @param string $status
+     */
+    public function setStatus(string $status): void
+    {
+        $this->status = $status;
     }
 }
