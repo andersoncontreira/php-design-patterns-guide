@@ -1,0 +1,43 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "PHP Design Patterns Guide API",
+        "version": "1.0"
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "description": "Root endpoint",
+                "operationId": "/",
+                "responses": {
+                    "200": {
+                        "description": "Success response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RootSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "RootSchema": {
+                "required": [
+                    "app"
+                ],
+                "properties": {
+                    "app": {
+                        "type": "string",
+                        "example": "app-name:1.0.0"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}

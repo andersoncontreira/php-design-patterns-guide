@@ -55,7 +55,18 @@ RUN pecl install apcu && docker-php-ext-enable apcu
 # redis
 RUN pecl install redis && docker-php-ext-enable redis
 # xdebug
-RUN pecl install xdebug && docker-php-ext-enable xdebug
+# RUN pecl install xdebug && docker-php-ext-enable xdebug
+# Install xdebug
+RUN pecl install xdebug \
+    && echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_autostart=1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_port=9001" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.idekey=PHPSTORM_XDEBUG" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    # IP docker
+    && echo "xdebug.remote_host=172.17.0.1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_handler=dbgp" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_connect_back=0" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && docker-php-ext-enable xdebug
 
 #-----------------------------------------------------------------------------------------------------------------------
 # Composer

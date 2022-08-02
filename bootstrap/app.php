@@ -36,10 +36,12 @@ date_default_timezone_set('Etc/GMT+3');
 
 $app = new \Application\Application(dirname(__DIR__));
 
-//$app->withFacades();
+$app->withFacades();
 
 // $app->withEloquent();
 
+
+$app->configure('swagger-lume');
 /*
 |--------------------------------------------------------------------------
 | Register Container Bindings
@@ -59,7 +61,7 @@ $app->singleton(
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-//    Application\Console\Kernel::class
+    \Laravel\Lumen\Console\Kernel::class
 );
 
 /*
@@ -111,6 +113,7 @@ $app->middleware([
 $providers = [
 //    Application\Providers\AuthServiceProvider::class,
 //    Application\Providers\DependenceInjection\Caching\Redis\RedisCacheClientServiceProvider::class
+    SwaggerLume\ServiceProvider::class
 ];
 
 foreach ($providers as $provider) {

@@ -8,7 +8,10 @@ use Laravel\Lumen\Routing\Controller as BaseController;
 use Monolog\Logger;
 
 /**
- * Base controller
+ * @OA\Info(
+ *   title="PHP Design Patterns Guide API",
+ *   version="1.0"
+ * )
  */
 class AbstractController extends BaseController
 {

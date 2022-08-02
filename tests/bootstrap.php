@@ -29,8 +29,6 @@ define('APP_ROOT', dirname(__DIR__));
 define('APP_NAME', getenv('APP_NAME') ?: 'php-design-patterns-guide');
 define('APP_VERSION', getenv('APP_VERSION') ?: '1.0.0');
 define('APP_ARCH_VERSION', getenv('APP_ARCH_VERSION') ?: 'v1');
-define('APP_ENV', getenv('APP_ENV') ?: 'development');
-define('APPLICATION_ENV', getenv('APP_ENV') ?: 'development');
 
 /** TODO ajustar o boot */
 $filename = sprintf('%s.env', APPLICATION_ENV);

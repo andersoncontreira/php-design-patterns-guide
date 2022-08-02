@@ -46,10 +46,14 @@ class ApplicationMock extends AbstractMock
         $appFake->basePath(APP_ROOT);
 
         $applicationMock = $this->prophesize(Application::class);
-        //$container->databasePath($this->typeString)->willReturn($appFake->databasePath(func_get_arg(0)));
+
         $applicationMock->databasePath($this->typeString)->will(function ($args) use ($appFake) {
             //$this->getName()->willReturn($args[0]);
             return $appFake->databasePath($args[0]);
+        });
+
+        $applicationMock->make($this->typeString, $this->typeArray)->will(function ($args) use ($appFake) {
+            return $appFake->make($args[0], $args[1]);
         });
 
         /** @var Application $temporary */
@@ -59,9 +63,15 @@ class ApplicationMock extends AbstractMock
         // databasePath
         Container::setInstance($temporary);
 
-        //$container->get('app')->willReturn($this);
-        //$container->get(Application::class)->willReturn($this);
+        // config
+        $configuration = new ConfigRepository();
+        $configuration->set(ConfigurationTypeEnum::app, ApplicationConfiguration::getConfigurationArray());
+        $configuration->set(ConfigurationTypeEnum::database, DatabaseConfiguration::getConfigurationArray());
 
+        $applicationMock->get('app')->willReturn($applicationMock);
+        $applicationMock->get(Application::class)->willReturn($applicationMock);
+
+        $applicationMock->get('config')->willReturn($configuration);
         $applicationMock->get('path')->willReturn($appFake->path());
         $applicationMock->get('env')->willReturn($appFake->environment());
 
@@ -69,10 +79,7 @@ class ApplicationMock extends AbstractMock
         $applicationMock->get(Logger::class)->willReturn($logger);
         $applicationMock->get('log')->willReturn($logger);
 
-        // config
-        $configuration = new ConfigRepository();
-        $configuration->set(ConfigurationTypeEnum::app, ApplicationConfiguration::getConfigurationArray());
-        $configuration->set(ConfigurationTypeEnum::database, DatabaseConfiguration::getConfigurationArray());
+
         //$applicationMock->get('config')->willReturn($configuration);
 
         $properties = [

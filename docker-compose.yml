@@ -12,12 +12,14 @@ services:
       AWS_SECRET_ACCESS_KEY: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
       TEST_ENV: ${TEST_ENV}
       LOCALHOST: ${LOCALHOST}
+      PHP_IDE_CONFIG: "serverName=docker"
     depends_on:
 #      - "localstack"
       - "redis"
       - "mysql"
     ports:
-      - '9000:9000'
+      - '8001:9000'
+      - '8002:9001'
     networks:
       - service-php-v1
     volumes:

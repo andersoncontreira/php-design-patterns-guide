@@ -7,3 +7,4 @@
 /.idea/
 /vendor/phpunit/
 /vendor/phpunit/phpunit/
+/storage/logs/

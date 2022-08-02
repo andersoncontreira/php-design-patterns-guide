@@ -7,6 +7,7 @@ xml, json (feed rss algo assim)
 * [ ] Aplicar RESTful
 * [ ] Aplicar Swagger
 * [ ] Aplicar HATEOS
+* [ ] Aplicar decorators para aplicar rotas etc
 * [ ] Aplicar Design patterns em contextos já utilizados
 * [ ] Aplicar migrations
 * [ ] Aplicar rota de reports

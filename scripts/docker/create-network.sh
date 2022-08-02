@@ -5,9 +5,9 @@ elif test -f ./scripts/.projectrc; then
   source ./scripts/.projectrc
 fi
 
-if [ -z "$NETWORK_NAME" ]; then
-  echo 'NETWORK_NAME not defined'
+if [ -z "$APP_DOCKER_NETWORK_NAME" ]; then
+  echo 'APP_DOCKER_NETWORK_NAME not defined'
   exit 1
 else
-  docker network create --driver bridge $NETWORK_NAME
+  docker network create --driver bridge $APP_DOCKER_NETWORK_NAME
 fi

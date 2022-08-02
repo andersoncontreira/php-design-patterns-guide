@@ -13,6 +13,7 @@
     "ext-simplexml": "*",
     "ext-tokenizer": "*",
     "ext-xmlwriter": "*",
+    "darkaonline/swagger-lume": "8.*",
     "flipbox/lumen-generator": "^9.1",
     "illuminate/config": "^8.83",
     "illuminate/container": "^8.83",

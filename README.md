@@ -79,10 +79,44 @@ Project containing real examples of design patterns, contain a guide to help the
       - [Dataproviders](#)
      
 
+## Swagger
+To configure the swagger the first step is to execute the follow command:
+```
+php artisan swagger-lume:publish
+```
+Commands details:
+* Run `php artisan swagger-lume:publish-config` to publish configs (config/swagger-lume.php)
+* Run `php artisan swagger-lume:publish-views` to publish views (resources/views/vendor/swagger-lume)
+* Run `php artisan swagger-lume:publish` to publish everything
+* Run `php artisan swagger-lume:generate` to generate docs
 
+### Path changes
+Open the generated file `config/swagger-lume.php` and change the follow lines:
+```
+'api' => '/docs',
+'docs' => '/openapi.json',
+'annotations' => base_path('src/Application'),
+'docs_json' => 'openapi.json',
+```
+### Create the Swagger files
+Execute the follow command:
+```
+php artisan swagger-lume:generate
+```
 
+### Generate the required folder structure for views
+Execute the follow command:
+```
+./scripts/lumen/create-storage.sh
+```
 
-
+### See the docs page
+Access the follow endpoint:
+```
+http://localhost:8000/docs
+```
+Expected result:
+![Swagger](./docs/images/swagger.png "Docs page").
 
 ## References
 - https://thephpleague.com/
@@ -96,3 +130,4 @@ Project containing real examples of design patterns, contain a guide to help the
 - https://www.applause.com/blog/functional-testing-types-examples
 - https://martinfowler.com/articles/microservice-testing/
 - https://www.atlassian.com/continuous-delivery/software-testing/types-of-software-testing
+

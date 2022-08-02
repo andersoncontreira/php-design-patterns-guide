@@ -21,6 +21,16 @@ use Psr\Container\NotFoundExceptionInterface;
 class AppController extends AbstractController
 {
     /**
+     * @OA\Get(
+     *     path="/",
+     *     operationId="/",
+     *     description="Root endpoint",
+     *     @OA\Response(
+     *          response="200",
+     *          description="Success response",
+     *          @OA\JsonContent(ref="#/components/schemas/RootSchema")
+     *     )
+     * )
      * @return JsonResponse
      */
     public function index(): JsonResponse
