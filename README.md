@@ -78,8 +78,66 @@ Project containing real examples of design patterns, contain a guide to help the
       - [Datasets](#)
       - [Dataproviders](#)
      
+## Service Architecture
+Diagrams of the project architecture and others.
 
-## Swagger
+## Routes of the service
+List of routes:
+```
+GET / - Root
+GET /docs - Swagger docs
+GET /alive - Health Check
+GET /v1/product - Product List
+POST /v1/product - Product Create
+DELETE /v1/product/<uuid> - Soft Product Delete
+GET /v1/product/<uuid> - Product Get
+PATCH /v1/product/<uuid> - Soft Product Update
+PUT /v1/product/<uuid> - Complete Product Update
+```
+## Prerequisites
+- docker
+- docker-compose
+- php 7.4
+
+## Features
+- Projects Guidelines (Best practices)
+- Docker Management (Docker-Compose)
+- Localstack
+- MySQL
+- Redis
+- OpenApi (Swagger)
+- GitHub Actions
+- Tests (Unit, Component, and Integration)
+- Coverage Reports
+- Code formatter (Prettier)
+- Lint (PHPCS)
+- Standard commits (Commitizen)
+- Standard files setup (Editorconfig)
+- REST (RESTful & HATEOS)
+- CodeQuality (Sonar)
+- Database Migrations (Lumen)
+
+## Installation
+### Installing AWS CLI
+Docs:
+https://docs.aws.amazon.com/en/cli/latest/userguide/install-cliv2.html
+
+Execute the follow command:
+```bash
+apt install awscli
+```
+Execute the follow command:
+```bash
+aws configure
+```
+
+### Creating the Docker network
+Execute the follow command:
+```bash
+./scripts/docker/create-network.sh
+```
+
+### Swagger
 To configure the swagger the first step is to execute the follow command:
 ```
 php artisan swagger-lume:publish
@@ -90,7 +148,7 @@ Commands details:
 * Run `php artisan swagger-lume:publish` to publish everything
 * Run `php artisan swagger-lume:generate` to generate docs
 
-### Path changes
+#### Path changes
 Open the generated file `config/swagger-lume.php` and change the follow lines:
 ```
 'api' => '/docs',
@@ -98,19 +156,19 @@ Open the generated file `config/swagger-lume.php` and change the follow lines:
 'annotations' => base_path('src/Application'),
 'docs_json' => 'openapi.json',
 ```
-### Create the Swagger files
+#### Create the Swagger files
 Execute the follow command:
 ```
 php artisan swagger-lume:generate
 ```
 
-### Generate the required folder structure for views
+#### Generate the required folder structure for views
 Execute the follow command:
 ```
 ./scripts/lumen/create-storage.sh
 ```
 
-### See the docs page
+#### See the docs page
 Access the follow endpoint:
 ```
 http://localhost:8000/docs
