@@ -7,7 +7,8 @@
     "paths": {
         "/": {
             "get": {
-                "description": "Root endpoint",
+                "summary": "Root endpoint",
+                "description": "Get the app name and version",
                 "operationId": "/",
                 "responses": {
                     "200": {
@@ -22,10 +23,218 @@
                     }
                 }
             }
+        },
+        "/alive": {
+            "get": {
+                "summary": "Service Health Method",
+                "description": "Check if the application are running well",
+                "operationId": "/alive",
+                "responses": {
+                    "200": {
+                        "description": "Success response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HealthCheckSchema"
+                                }
+                            }
+                        }
+                    },
+                    "424": {
+                        "description": "Failed dependency response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DegradedCheckSchema"
+                                }
+                            }
+                        }
+                    },
+                    "503": {
+                        "description": "Service unavailable response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UnhealthyCheckSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/product": {
+            "get": {
+                "summary": "Product List",
+                "description": "Product List",
+                "operationId": "/v1/product",
+                "responses": {
+                    "200": {
+                        "description": "Success response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HateosProductListResponseSchema"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProductListErrorResponseSchema"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Service fail response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProductListErrorResponseSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
         "schemas": {
+            "EntrySchema": {
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "example": "healthy"
+                    },
+                    "duration": {
+                        "type": "string",
+                        "example": "0:00:00.013737"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "example": "db"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "EntryData": {
+                "properties": {
+                    "name": {
+                        "$ref": "#/components/schemas/EntrySchema"
+                    }
+                },
+                "type": "object"
+            },
+            "HealthCheckSchema": {
+                "required": [
+                    "status",
+                    "totalDuration",
+                    "entries"
+                ],
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "example": "healthy"
+                    },
+                    "totalDuration": {
+                        "type": "string",
+                        "example": "0:00:00.013737"
+                    },
+                    "entries": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/EntryData"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "DegradedCheckSchema": {
+                "required": [
+                    "status",
+                    "totalDuration",
+                    "entries"
+                ],
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "example": "degraded"
+                    },
+                    "totalDuration": {
+                        "type": "string",
+                        "example": "0:00:00.013737"
+                    },
+                    "entries": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/EntryData"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "UnhealthyCheckSchema": {
+                "required": [
+                    "status",
+                    "totalDuration",
+                    "entries"
+                ],
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "example": "unhealthy"
+                    },
+                    "totalDuration": {
+                        "type": "string",
+                        "example": "0:00:00.013737"
+                    },
+                    "entries": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/EntryData"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "ProductSchema": {},
+            "HateosProductListResponseSchema": {},
+            "ProductListResponseSchema": {},
+            "ProductListErrorResponseSchema": {},
+            "ProductGetResponseSchema": {},
+            "HateosProductGetResponseSchema": {},
+            "ProductGetErrorResponseSchema": {},
+            "ProductCreateRequestSchema": {},
+            "ProductCreateResponseSchema": {},
+            "ProductCreateErrorResponseSchema": {},
+            "ProductCompleteUpdateRequestSchema": {
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ProductCreateRequestSchema"
+                    }
+                ]
+            },
+            "ProductUpdateResponseSchema": {
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ProductCreateResponseSchema"
+                    }
+                ]
+            },
+            "ProductUpdateErrorResponseSchema": {},
+            "ProductSoftUpdateRequestSchema": {},
+            "ProductSoftDeleteResponseSchema": {},
+            "ProductDeleteResponseSchema": {},
+            "ProductSoftDeleteErrorResponseSchema": {},
+            "ProductDeleteErrorResponseSchema": {},
             "RootSchema": {
                 "required": [
                     "app"

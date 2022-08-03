@@ -36,6 +36,8 @@ abstract class AbstractComponentTestCase extends TestCase
 
         try {
             $this->logger = $this->app->get(Logger::class);
+            //compatibilidade temporária
+            $this->container = $this->app;
         } catch (\Throwable $e) {
             $this->logger = ConsoleLoggerHelper::getLogger();
         }

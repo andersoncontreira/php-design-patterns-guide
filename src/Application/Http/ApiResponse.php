@@ -149,7 +149,7 @@ class ApiResponse
             ];
 
             if (get_environment() == 'development') {
-                $body['trace'] = $this->exception->getTraceAsString();
+                $body['trace'] = $this->exception->getTrace();
             }
         } else {
             if ($this->total > 1) {

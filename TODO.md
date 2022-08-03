@@ -25,6 +25,9 @@ https://stackoverflow.com/questions/12104303/how-can-i-get-xdebug-to-run-with-ph
   * https://github.com/DarkaOnLine/SwaggerLume
   * https://stackoverflow.com/questions/45211512/how-to-integrate-swagger-in-lumen-laravel-for-rest-api
 
+# Validation
+* https://respect-validation.readthedocs.io/en/latest/rules/When/
+
 https://github.com/DesignPatternsPHP/DesignPatternsPHP
 https://github.com/mawrkus/js-unit-testing-guide#-table-of-contents
 template-lumen-service-php/blob/production/app/Providers/DependenceInjection/Services/Cognito/CognitoTokenServiceProvider.php

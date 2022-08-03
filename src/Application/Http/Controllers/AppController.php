@@ -8,11 +8,7 @@ namespace Application\Http\Controllers;
 use Application\Enums\HealthStatus;
 use Application\Facades\HealthCheckManagerFacade;
 use Application\HealthCheck\HealthCheckResponse;
-use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Http\JsonResponse;
-use Monolog\Logger;
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
 
 /**
  * Base API Controller
@@ -23,8 +19,9 @@ class AppController extends AbstractController
     /**
      * @OA\Get(
      *     path="/",
+     *     summary="Root endpoint",
      *     operationId="/",
-     *     description="Root endpoint",
+     *     description="Get the app name and version",
      *     @OA\Response(
      *          response="200",
      *          description="Success response",
@@ -41,10 +38,28 @@ class AppController extends AbstractController
     }
 
     /**
+     * @OA\Get(
+     *     path="/alive",
+     *     summary="Service Health Method",
+     *     operationId="/alive",
+     *     description="Check if the application are running well",
+     *     @OA\Response(
+     *          response="200",
+     *          description="Success response",
+     *          @OA\JsonContent(ref="#/components/schemas/HealthCheckSchema")
+     *     ),
+     *     @OA\Response(
+     *          response="424",
+     *          description="Failed dependency response",
+     *          @OA\JsonContent(ref="#/components/schemas/DegradedCheckSchema")
+     *     ),
+     *     @OA\Response(
+     *          response="503",
+     *          description="Service unavailable response",
+     *          @OA\JsonContent(ref="#/components/schemas/UnhealthyCheckSchema")
+     *     )
+     * )
      * @return JsonResponse
-     * @throws BindingResolutionException
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
      */
     public function alive(): JsonResponse
     {

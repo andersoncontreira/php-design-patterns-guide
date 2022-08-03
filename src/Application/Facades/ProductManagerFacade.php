@@ -164,4 +164,9 @@ class ProductManagerFacade implements FacadeInterface
         $this->updateService->setDebug($this->debug);
         $this->deleteService->setDebug($this->debug);
     }
+
+    public function count(array $where, int $offset, int $limit, string $orderBy, $sortBy, array $fields)
+    {
+        return 0;
+    }
 }

@@ -77,6 +77,7 @@
       "@test"
     ],
     "guidelines": "./scripts/guidelines-checker.py",
+    "docs": " php artisan swagger-lume:generate",
     "start": "./scripts/runenv.sh",
     "testenv": "./scripts/testenv.sh",
     "lint": "./bin/php-cs-fixer fix --diff src",
