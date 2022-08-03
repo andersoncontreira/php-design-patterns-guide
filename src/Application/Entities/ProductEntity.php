@@ -26,6 +26,4 @@ class ProductEntity extends AbstractEntity implements EntityInterface
     public \DateTime $deleteddAt;
     public string $uuid;
 
-
-
 }

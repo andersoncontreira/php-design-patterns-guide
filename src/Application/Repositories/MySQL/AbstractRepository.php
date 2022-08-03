@@ -7,7 +7,7 @@ namespace Application\Repositories\MySQL;
 
 use Application\Converters\EntityConverter;
 use Application\Entities\EntityInterface;
-use Application\Utils\Pagination;
+use Application\Utils\PaginationUtils;
 use Illuminate\Database\DatabaseManager;
 use Monolog\Logger;
 
@@ -28,6 +28,7 @@ abstract class AbstractRepository implements RepositoryInterface
     protected string $pk;
     protected string $uuidKey;
     protected \Exception $exception;
+    protected bool $debug = false;
 
     public function __construct(DatabaseManager $manager, Logger $logger)
     {
@@ -59,11 +60,11 @@ abstract class AbstractRepository implements RepositoryInterface
     {
 
         if ($limit == null) {
-            $limit = Pagination::LIMIT;
+            $limit = PaginationUtils::LIMIT;
         }
 
         if ($offset == null) {
-            $offset = Pagination::OFFSET;
+            $offset = PaginationUtils::OFFSET;
         }
 
         if ($fields == null) {
@@ -83,8 +84,14 @@ abstract class AbstractRepository implements RepositoryInterface
             $query->orderBy($orderBy);
         }
 
+        var_dump('aq', $this->debug);
+        var_dump($query->toSql());
         $result = null;
         try {
+            if ($this->debug) {
+                $this->logger->debug($query->toSql());
+                $this->logger->info($query->toSql());
+            }
             $cursor = $query->cursor();
             $result = $cursor->all();
             $result = $this->convertList($result);
@@ -94,5 +101,18 @@ abstract class AbstractRepository implements RepositoryInterface
         }
 
         return $result;
+    }
+
+    public function getPK(): string
+    {
+        return $this->pk;
+    }
+
+    /**
+     * @param bool $debug
+     */
+    public function setDebug(bool $debug): void
+    {
+        $this->debug = $debug;
     }
 }

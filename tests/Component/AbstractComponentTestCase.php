@@ -32,10 +32,8 @@ abstract class AbstractComponentTestCase extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-
         /** @var ContainerInterface $container */
         $this->container = new Application(APP_ROOT);
-
         try {
             $this->logger = $this->container->get(Logger::class);
         } catch (\Throwable $e) {

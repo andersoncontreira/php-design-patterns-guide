@@ -12,7 +12,7 @@ use Application\Factories\LoggerFactory;
 use Application\Http\Hateos\HateosLink;
 use Application\Http\Hateos\HateosMeta;
 use Application\Utils\HttpUtils;
-use Application\Utils\Pagination;
+use Application\Utils\PaginationUtils;
 use Monolog\Logger;
 
 class ApiResponse
@@ -33,8 +33,8 @@ class ApiResponse
     protected int $count = 0;
     protected array $params = [];
     protected $apiRequest = null;
-    protected int $limit = Pagination::LIMIT;
-    protected int $offset = Pagination::OFFSET;
+    protected int $limit = PaginationUtils::LIMIT;
+    protected int $offset = PaginationUtils::OFFSET;
 
     public function __construct(Logger $logger = null, $api_request = null)
     {
@@ -67,8 +67,8 @@ class ApiResponse
 
         if ($api_request) {
             $this->params = $api_request->fields ?: [];
-            $this->limit = $api_request->limit ?: Pagination::LIMIT;
-            $this->offset = $api_request->offset ?: Pagination::OFFSET;
+            $this->limit = $api_request->limit ?: PaginationUtils::LIMIT;
+            $this->offset = $api_request->offset ?: PaginationUtils::OFFSET;
             $this->apiRequest = $api_request;
         }
     }

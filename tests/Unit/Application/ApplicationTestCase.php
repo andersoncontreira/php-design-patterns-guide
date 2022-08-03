@@ -11,13 +11,14 @@ use Psr\Container\NotFoundExceptionInterface;
 /**
  *
  */
-class ApplicationTest extends AbstractUnitTestCase
+class ApplicationTestCase extends AbstractUnitTestCase
 {
     protected Application $instance;
 
     public function setUp(): void
     {
         parent::setUp();
+        $this->instance = new Application(APP_ROOT);
     }
 
     /**
@@ -29,14 +30,8 @@ class ApplicationTest extends AbstractUnitTestCase
         $this->logger->info(
             sprintf("Testing the method %s with parameters: %s", __METHOD__, 'none')
         );
-        $app = null;
-        try {
-            $this->instance = new Application(APP_ROOT);
-            $logger = $this->instance->get(Logger::class);
-            $app = $this->instance->get('app');
-        } catch (\Exception $e) {
-            $this->logger->error($e);
-        }
+
+        $app = $this->instance->get('app');
 
 
         self::assertInstanceOf(Application::class, $app);

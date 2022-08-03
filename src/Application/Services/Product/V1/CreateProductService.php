@@ -3,23 +3,25 @@
 declare(strict_types=1);
 
 
-namespace Application\Services\V1\Product;
+namespace Application\Services\Product\V1;
 
 
 use Application\Application;
 use Application\Entities\ProductEntity;
 use Application\Exceptions\ServiceException;
-use Application\Validators\UpdateProductValidator;
+use Application\Services\Product\AbstractProductService;
+use Application\Services\Product\CreateProductServiceInterface;
+use Application\Validators\Product\CreateProductValidator;
 
-class UpdateProductService extends AbstractProductService
+class CreateProductService extends AbstractProductService implements CreateProductServiceInterface
 {
     public function __construct(Application $application)
     {
         parent::__construct($application);
-        $this->validator = $application->get(UpdateProductValidator::class);
+        $this->validator = $application->get(CreateProductValidator::class);
     }
 
-    public function execute(): bool
+    public function execute(array $data=null): bool
     {
         $result = false;
         try {
@@ -38,13 +40,5 @@ class UpdateProductService extends AbstractProductService
 
     }
 
-    public function validate(): bool
-    {
-        $result = $this->validator->validate();
-        if (!$result) {
-            $this->exception = $this->validator->getException();
-        }
 
-        return  $result;
-    }
 }

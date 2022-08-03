@@ -6,6 +6,8 @@ use Application\Entities\EntityInterface;
 
 interface RepositoryInterface
 {
+    public function getPK();
+
     public function find($id);
 
     public function findByUUID($name);

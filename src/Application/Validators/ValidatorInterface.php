@@ -9,5 +9,7 @@ interface ValidatorInterface
 
     public function getException():ValidatorException;
 
-    public function validate():bool;
+    public function validate(array $data):bool;
+
+    public function defineRules();
 }

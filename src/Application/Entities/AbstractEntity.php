@@ -30,4 +30,17 @@ abstract class AbstractEntity implements EntityInterface
             ObjectUtils::populate($this, $data);
         }
     }
+
+    public static function getAttributes(): array
+    {
+        $attributes = [];
+        $reflection = new ReflectionClass(static::class);
+        $properties = $reflection->getProperties();
+        foreach ($properties as $property) {
+            $property->setAccessible(true);
+            $attributes[] = $property->getName();
+        }
+
+        return $attributes;
+    }
 }

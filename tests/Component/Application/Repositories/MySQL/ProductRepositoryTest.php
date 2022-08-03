@@ -55,7 +55,7 @@ class ProductRepositoryTest extends AbstractComponentTestCase
 
         $result = $this->instance->list($where, $fields, $offset, $limit, $sortBy, $orderBy);
 
-        //var_dump($result);
+        var_dump($result);
 
         self::assertNotNull($result);
         self::assertIsArray($result);

@@ -18,6 +18,7 @@ xml, json (feed rss algo assim)
 * [ ] Utilizar Mocks
 * [ ] Implementar testes
 
+https://stackoverflow.com/questions/12104303/how-can-i-get-xdebug-to-run-with-phpunit-on-the-cli
 
 # Good references:
 * Swagger:

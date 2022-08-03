@@ -6,8 +6,8 @@ declare(strict_types=1);
 namespace Application\Utils;
 
 
-class Pagination
+class OrderUtils
 {
-    const LIMIT = 10;
-    const OFFSET = 0;
+    const ASC = 'asc';
+    const DESC = 'desc';
 }

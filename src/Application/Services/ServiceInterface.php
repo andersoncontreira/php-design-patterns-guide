@@ -10,11 +10,18 @@ interface ServiceInterface
      * @return bool
      *
      */
-    public function validate(): bool;
+    public function validate(array $data=null): bool;
     /**
      * Method execute
      * @return bool
      *
      */
-    public function execute(): bool;
+    public function execute(array $data=null): bool;
+
+    /**
+     * Define if the class will print debug logs
+     * @param bool $debug
+     * @return mixed
+     */
+    public function setDebug(bool $debug);
 }

@@ -25,5 +25,6 @@
     <php>
         <const name="APPLICATION_ENV" value="testing"/>
         <const name="APP_ENV" value="testing"/>
+        <ini name="display_errors" value="true"/>
     </php>
 </phpunit>

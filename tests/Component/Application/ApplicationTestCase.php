@@ -10,7 +10,7 @@ use Psr\Container\NotFoundExceptionInterface;
 /**
  *
  */
-class ApplicationTest extends AbstractComponentTestCase
+class ApplicationTestCase extends AbstractComponentTestCase
 {
     protected Application $instance;
 
@@ -18,6 +18,7 @@ class ApplicationTest extends AbstractComponentTestCase
     {
         parent::setUp();
         $this->instance = new Application(APP_ROOT);
+
     }
 
     /**
@@ -26,6 +27,7 @@ class ApplicationTest extends AbstractComponentTestCase
      */
     public function testInstanceContainer()
     {
+
         $this->logger->info(
             sprintf("Testing the method %s with parameters: %s", __METHOD__, 'none')
         );

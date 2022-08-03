@@ -3,19 +3,25 @@
 declare(strict_types=1);
 
 
-namespace Application\Validators;
+namespace Application\Validators\Product;
 
 
 use Application\Exceptions\ValidatorException;
+use Application\Validators\AbstractValidator;
+use Application\Validators\ValidatorInterface;
 use Application\ValueObjects\ValueObjectInterface;
 
-class UpdateProductValidator implements ValidatorInterface
+class CreateProductValidator extends AbstractValidator implements ValidatorInterface
 {
     protected ?ValidatorException $exception = null;
     protected ValueObjectInterface $valueObject;
 
+    public function defineRules()
+    {
 
-    public function validate(): bool
+    }
+
+    public function validate(array $data=null): bool
     {
         $result = false;
 
