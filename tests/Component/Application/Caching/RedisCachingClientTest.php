@@ -16,11 +16,6 @@ class RedisCachingClientTest extends AbstractComponentTestCase
 {
     protected RedisCachingClient $instance;
 
-    public function setUp(): void
-    {
-        parent::setUp();
-    }
-
     /**
      * @dataProvider getDataForNewInstance
      * @param $cacheClient
