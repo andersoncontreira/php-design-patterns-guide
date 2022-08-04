@@ -6,8 +6,8 @@ namespace Application\Tests\Component;
 
 use Application\Application;
 use Application\Tests\Unit\Helpers\ConsoleLoggerHelper;
+use Laravel\Lumen\Testing\TestCase;
 use Monolog\Logger;
-use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 
 /**
@@ -31,10 +31,14 @@ abstract class AbstractComponentTestCase extends TestCase
      */
     public function setUp(): void
     {
+        /**
+         * If something strange happens here, it can be caused by misconfiguration of the project
+         * like the connection
+         */
         parent::setUp();
 
         /** @var ContainerInterface $container */
-        $this->container = new Application(APP_ROOT);
+        $this->container = $this->app;
 
         try {
             $this->logger = $this->container->get(Logger::class);
@@ -42,6 +46,14 @@ abstract class AbstractComponentTestCase extends TestCase
             $this->logger = ConsoleLoggerHelper::getLogger();
         }
 
+    }
+
+    /**
+     * @return Application
+     */
+    public function createApplication()
+    {
+        return new Application(APP_ROOT);
     }
 
 }

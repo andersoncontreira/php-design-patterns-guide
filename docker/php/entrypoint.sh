@@ -4,7 +4,7 @@
 
 # execute the migrations
 # php artisan migrate
-# composer run migrate
+composer run migrate
 
 # openapi/swagger docs generation
 composer run docs

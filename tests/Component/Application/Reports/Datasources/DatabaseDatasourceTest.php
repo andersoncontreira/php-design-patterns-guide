@@ -10,6 +10,7 @@ namespace Application\Tests\Component\Application\Reports\Datasources;
 use Application\Reports\Datasources\DatabaseDatasource;
 use Application\Repositories\MySQL\ProductRepository;
 use Application\Tests\Component\AbstractComponentTestCase;
+use Illuminate\Database\Eloquent\Casts\ArrayObject;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
@@ -41,4 +42,6 @@ class DatabaseDatasourceTest extends AbstractComponentTestCase
         $data = $this->instance->getData();
         self::assertIsArray($data);
     }
+
+
 }
