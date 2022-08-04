@@ -5,9 +5,12 @@
 /bin/
 /.php-cs-fixer.cache
 /.idea/
-/vendor/phpunit/
-/vendor/phpunit/phpunit/
+/vendor/phpunit/*
+/vendor/phpunit/phpunit/*
 /storage/logs/
 
 docker/nginx/certificate.crt
 docker/nginx/certificate.key
+/docker/nginx/logs/
+/storage/framework/views/*
+
