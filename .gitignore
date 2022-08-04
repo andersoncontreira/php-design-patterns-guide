@@ -8,3 +8,4 @@
 /vendor/phpunit/
 /vendor/phpunit/phpunit/
 /storage/logs/
+/storage/framework/views/*

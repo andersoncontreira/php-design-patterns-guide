@@ -33,20 +33,23 @@ abstract class AbstractComponentTestCase extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-
-        try {
-            $this->logger = $this->app->get(Logger::class);
-            //compatibilidade temporária
-            $this->container = $this->app;
-        } catch (\Throwable $e) {
-            $this->logger = ConsoleLoggerHelper::getLogger();
-        }
+        $this->container = $this->app;
+        $this->initializeLogger();
 
     }
 
     public function createApplication(): Application
     {
         return new Application(APP_ROOT);
+    }
+
+    private function initializeLogger()
+    {
+        try {
+            $this->logger = $this->app->get(Logger::class);
+        } catch (\Throwable $e) {
+            $this->logger = ConsoleLoggerHelper::getLogger();
+        }
     }
 
 }

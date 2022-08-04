@@ -9,11 +9,13 @@ namespace Application\Facades;
 use Application\Caching\RedisCachingClient;
 use Application\HealthCheck\Checks\MysqlConnectionHealthCheck;
 use Application\HealthCheck\Checks\RedisConnectionHealthCheck;
-use Application\HealthCheck\HealthCheckResult;
 use Application\Services\HealthCheck\HealthCheckService;
 use Illuminate\Database\DatabaseManager;
 use Monolog\Logger;
 
+/**
+ *
+ */
 class HealthCheckManagerFacade implements FacadeInterface
 {
     private HealthCheckService $healthCheckService;

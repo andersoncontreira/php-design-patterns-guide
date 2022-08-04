@@ -15,6 +15,9 @@ $v1 = [
 
 $routes = [
     '/routes/v1/product.php',
+//    '/routes/v2/product.php',
+//    '/routes/v1/product.php',
+//    '/routes/v1/product.php',
 ];
 
 /** @var Router $router */

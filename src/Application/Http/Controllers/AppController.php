@@ -65,6 +65,7 @@ class AppController extends AbstractController
     {
         /** @var HealthCheckManagerFacade $manager */
         try {
+            //TODO to fix
             $manager = app()->get(HealthCheckManagerFacade::class);
             return $manager->check();
         } catch (\Throwable $e) {
