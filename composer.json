@@ -21,7 +21,7 @@
     "illuminate/pagination": "^8.83",
     "laravel/lumen-framework": "^8.3",
     "league/config": "^1.1",
-    "monolog/monolog": "^2.7",
+    "monolog/monolog": "*",
     "nesbot/carbon": "^2.58",
     "php-middleware/request-id": "^4.0",
     "predis/predis": "^1.1",

@@ -89,14 +89,11 @@ Check the extensions:
 ```
 php -m
 ```
-Edit the php.ini and enable the follow configs.
-```
-extension=pdo_mysql
-```
-
 Install the other requires extensions:
 ```
 sudo apt install php8.1-xml
+sudo apt install php8.1-mbstring
+sudo apt install php8.1-mysql
 ```
 Check the extensions:
 ```

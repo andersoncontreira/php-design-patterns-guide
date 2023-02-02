@@ -18,6 +18,8 @@ class ConsoleLogger extends Logger
 
     protected $name = 'console';
 
+    protected $timezone = 'America/Sao_Paulo';
+
     public function __construct(string $name = null, array $handlers = [], array $processors = [], ?DateTimeZone $timezone = null)
     {
         $level = Logger::toMonologLevel(self::$level);
@@ -30,6 +32,7 @@ class ConsoleLogger extends Logger
             $stdout->setFormatter(new ConsoleFormatter());
             $handlers = [];
         }
-        parent::__construct($this->name, $handlers, $processors, $timezone);
+
+        parent::__construct($this->name, $handlers, $processors, $timezone ?: new DateTimeZone($this->timezone));
     }
 }
