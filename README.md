@@ -14,7 +14,7 @@ Project containing real examples of design patterns, contain a guide to help the
       - [CQRS]
 2. Behavioral
    1. Main patterns 
-      - [Chain of responsability]
+      - [Chain of responsibility]
       - [Command]
       - [Interpreter]
       - [Iterator]
@@ -26,7 +26,7 @@ Project containing real examples of design patterns, contain a guide to help the
       - [Visitor]
    2. Other patterns
       - [Caching]
-      - [Feature toogle]
+      - [Feature toggle]
       - [Mediator]
       - [Pipeline]
       - [Circuit breaker]
@@ -78,6 +78,31 @@ Project containing real examples of design patterns, contain a guide to help the
       - [Datasets](#)
       - [Dataproviders](#)
      
+## Installing
+Downloading the composer.
+```
+./script/install.sh
+```
+
+### Enabling the extensions
+Check the extensions:
+```
+php -m
+```
+Edit the php.ini and enable the follow configs.
+```
+extension=pdo_mysql
+```
+
+Install the other requires extensions:
+```
+sudo apt install php8.1-xml
+```
+Check the extensions:
+```
+php -m
+```
+
 
 ## Swagger
 To configure the swagger the first step is to execute the follow command:
@@ -117,6 +142,14 @@ http://localhost:8000/docs
 ```
 Expected result:
 ![Swagger](./docs/images/swagger.png "Docs page").
+
+## Error
+ERROR: Network service-php-v1 declared as external, but could not be found. Please create the network manually using `docker network create service-php-v1` and try again.
+
+Solution:
+```
+./scripts/docker/create-network.sh
+```
 
 ## References
 - https://thephpleague.com/
