@@ -61,17 +61,19 @@ Project containing real examples of design patterns, contain a guide to help the
    1. Main types 
       - [Unit](#)
       - [Integration](#)
-      - [Component](#)
-      - [Functional](#)
+      - [Functional/Component](#)
       - [End-to-end](#)
       - [Smoke](#)
       - [API](#)
       - [Regression](#)
       - [UI](#) 
    2. Other types
+      - [Stress](#)
       - [Security](#)
       - [Performance](#)
-   3. Main resources 
+   3. Main resources concepts 
+      - [Fixtures](#)
+      - [Stubs](#)
       - [Mocks](#)
       - [Helpers](#)
       - [Datasources](#)
@@ -140,7 +142,17 @@ http://localhost:8000/docs
 Expected result:
 ![Swagger](./docs/images/swagger.png "Docs page").
 
-## Error
+## Migrations
+
+### Creating migrations
+
+```
+php artisan make:migration orders
+```
+
+## Running the migrations
+
+## Error Solutions
 ERROR: Network service-php-v1 declared as external, but could not be found. Please create the network manually using `docker network create service-php-v1` and try again.
 
 Solution:

@@ -25,7 +25,7 @@ class CustomerEntity extends AbstractEntity
     public int $active;
     public \DateTime $createdAt;
     public \DateTime $updatedAt;
-    public \DateTime $deleteddAt;
+    public \DateTime $deletedAt;
     public string $uuid;
 
 

@@ -1,4 +1,4 @@
-FROM php:7.4.0-fpm-alpine
+FROM php:8.1.0-fpm-alpine
 MAINTAINER Anderson Contreira <anderson.contreira@gmail.com>
 #-----------------------------------------------------------------------------------------------------------------------
 # ENVS
@@ -34,6 +34,8 @@ RUN apk add --no-cache build-base \
 RUN apk add --no-cache busybox-extras
 #    libicu-dev \
 #    libcurl4-gnutls-dev \
+# linux headers
+RUN apk add --update linux-headers
 #-----------------------------------------------------------------------------------------------------------------------
 # PHP Extensions
 #-----------------------------------------------------------------------------------------------------------------------
@@ -58,14 +60,14 @@ RUN pecl install redis && docker-php-ext-enable redis
 # RUN pecl install xdebug && docker-php-ext-enable xdebug
 # Install xdebug
 RUN pecl install xdebug \
-    && echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    && echo "xdebug.remote_autostart=1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    && echo "xdebug.remote_port=9001" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.mode=debug" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.start_with_request=yes" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.client_port=9001" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && echo "xdebug.idekey=PHPSTORM_XDEBUG" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     # IP docker
-    && echo "xdebug.remote_host=172.17.0.1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    && echo "xdebug.remote_handler=dbgp" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    && echo "xdebug.remote_connect_back=0" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.client_host=172.17.0.1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+#    && echo "xdebug.remote_handler=dbgp" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.discover_client_host=0" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && docker-php-ext-enable xdebug
 
 #-----------------------------------------------------------------------------------------------------------------------

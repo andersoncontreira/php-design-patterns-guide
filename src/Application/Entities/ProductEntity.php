@@ -23,7 +23,7 @@ class ProductEntity extends AbstractEntity implements EntityInterface
     public int $active;
     public \DateTime $createdAt;
     public \DateTime $updatedAt;
-    public \DateTime $deleteddAt;
+    public \DateTime $deletedAt;
     public string $uuid;
 
 
