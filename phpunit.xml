@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd" colors="true"
-         bootstrap="tests/bootstrap.php">
+         bootstrap="tests/bootstrap.php"
+>
+    <!-- bootstrap="tests/bootstrap.php" -->
+    <!-- bootstrap="vendor/autoload.php" -->
     <logging>
         <text outputFile="./storage/logs/phpunit.log"/>
         <junit outputFile="./storage/logs/phpunit.junit.log"/>
@@ -27,7 +30,7 @@
         </testsuite>
     </testsuites>
     <php>
-        <const name="APPLICATION_ENV" value="testing"/>
-        <const name="APP_ENV" value="testing"/>
+<!--        <const name="APPLICATION_ENV" value="testing"/>-->
+<!--        <const name="APP_ENV" value="testing"/>-->
     </php>
 </phpunit>

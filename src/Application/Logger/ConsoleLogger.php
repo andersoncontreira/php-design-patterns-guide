@@ -30,7 +30,7 @@ class ConsoleLogger extends Logger
         if (empty($handlers)) {
             $stdout = new StreamHandler('php://output', $level);
             $stdout->setFormatter(new ConsoleFormatter());
-            $handlers = [];
+            $handlers = [$stdout];
         }
 
         parent::__construct($this->name, $handlers, $processors, $timezone ?: new DateTimeZone($this->timezone));

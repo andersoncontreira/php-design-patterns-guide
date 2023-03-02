@@ -92,5 +92,8 @@ COPY ./docker/php/entrypoint.sh /usr/local/bin/
 RUN chmod 775 /usr/local/bin/entrypoint.sh
 # backwards compatibility
 RUN ln -s /usr/local/bin/entrypoint.sh /
+
+# chage the persions of the files in storage logs
+RUN chmod 775 storage/logs/*
 # cmd
 CMD ["entrypoint.sh"]

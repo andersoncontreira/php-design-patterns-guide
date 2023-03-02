@@ -4,6 +4,9 @@ Project containing real examples of design patterns, contain a guide to help the
 > All the information provided has been compiled & adapted from many references, some of them cited at the end of the document.
 > The guidelines are illustrated by my own examples, fruit of my personal experience writing and reviewing unit tests.
 
+
+> TODO: incluir um API Mocking (json-server)
+
 ## Table of contents
 
 1. Architectural
@@ -97,6 +100,12 @@ sudo apt install php8.1-xml
 sudo apt install php8.1-mbstring
 sudo apt install php8.1-mysql
 ```
+or 
+```
+sudo apt install php8.2-xml
+sudo apt install php8.2-mbstring
+sudo apt install php8.2-mysql
+```
 Check the extensions:
 ```
 php -m
@@ -148,6 +157,7 @@ Expected result:
 
 ```
 php artisan make:migration orders
+php artisan make:migration products
 ```
 
 ## Running the migrations

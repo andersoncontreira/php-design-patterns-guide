@@ -57,7 +57,9 @@
   "prefer-stable": true,
   "autoload": {
     "psr-4": {
-      "Application\\": "src/Application/"
+      "Application\\": "src/Application/",
+      "Database\\Factories\\": "database/factories/",
+      "Database\\Seeders\\": "database/seeders/"
     },
     "files": [
       "src/helpers.php"

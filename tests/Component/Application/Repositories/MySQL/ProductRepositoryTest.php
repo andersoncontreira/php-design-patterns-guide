@@ -6,9 +6,12 @@ declare(strict_types=1);
 namespace Application\Tests\Component\Application\Repositories\MySQL;
 
 
+use Application\Entities\ProductEntity;
 use Application\Repositories\MySQL\ProductRepository;
 use Application\Tests\Component\AbstractComponentTestCase;
 use Illuminate\Database\DatabaseManager;
+use Illuminate\Support\Facades\Artisan;
+use Laravel\Lumen\Testing\DatabaseMigrations;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
@@ -17,6 +20,8 @@ use Psr\Container\NotFoundExceptionInterface;
  */
 class ProductRepositoryTest extends AbstractComponentTestCase
 {
+//    use DatabaseMigrations;
+
     /**
      * @var ProductRepository
      */
@@ -26,6 +31,25 @@ class ProductRepositoryTest extends AbstractComponentTestCase
      */
     protected $manager;
 
+    public static string $migration = "database/migrations/2022_08_04_175059_products.php";
+
+    public static function setUpBeforeClass(): void
+    {
+        parent::setUpBeforeClass();
+        self::$staticLogger->info("Fixture the database table");
+
+        // Use the migrations to execute a specific case
+        Artisan::call(sprintf("migrate:refresh --path=%s", self::$migration));
+        Artisan::call('db:seed --class=Products');
+
+
+    }
+
+    private static function populateTable()
+    {
+
+    }
+
     /**
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
@@ -33,9 +57,16 @@ class ProductRepositoryTest extends AbstractComponentTestCase
     public function setUp(): void
     {
         parent::setUp();
+
         $this->manager = $this->container->get('db');
         $this->instance = $this->container->get(ProductRepository::class);
+
+
+
+
     }
+
+
 
     /**
      * @dataProvider getTestListData
@@ -55,10 +86,16 @@ class ProductRepositoryTest extends AbstractComponentTestCase
 
         $result = $this->instance->list($where, $fields, $offset, $limit, $sortBy, $orderBy);
 
-        //var_dump($result);
+        //TODO validar se o retorno teve dados
+//        var_dump($result);
 
+        /** @var ProductEntity $entity */
+        $entity = $result[0];
         self::assertNotNull($result);
         self::assertIsArray($result);
+        self::assertArrayHasKey('id', $entity->toArray());
+        //        self::assertObjectHasAttribute('0', $result);
+
     }
 
     /**

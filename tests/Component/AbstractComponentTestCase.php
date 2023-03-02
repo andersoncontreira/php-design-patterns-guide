@@ -15,6 +15,11 @@ use Psr\Container\ContainerInterface;
  */
 abstract class AbstractComponentTestCase extends TestCase
 {
+
+    /**
+     * @var Logger
+     */
+    protected static Logger $staticLogger;
     /**
      * @var Logger
      */
@@ -25,6 +30,13 @@ abstract class AbstractComponentTestCase extends TestCase
      * @var ContainerInterface
      */
     protected $container;
+
+    public static function setUpBeforeClass(): void
+    {
+        parent::setUpBeforeClass();
+        self::$staticLogger = ConsoleLoggerHelper::getLogger();
+
+    }
 
     /**
      * @return void

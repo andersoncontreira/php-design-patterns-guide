@@ -1,6 +1,8 @@
 <?php
 
 
+use Illuminate\Support\Facades\Artisan;
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
 // TODO revisar para ver uma solução melhor
