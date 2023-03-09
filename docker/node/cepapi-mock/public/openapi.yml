@@ -144,6 +144,21 @@ components:
           example: "7535"
           type: integer
       type: object
+    Produto:
+      properties:
+        cep:
+          example: "1"
+          type: integer
+        name:
+          example: "Common Pen"
+          type: string
+        supplier_id:
+          example: 1
+          type: integer
+        sku:
+          example: 1
+          type: integer
+      type: object
 info:
   title: cepapi-mock
   version: 1.0.0
@@ -171,6 +186,24 @@ paths:
                 $ref: '#/components/schemas/HealthCheckUnhealthy'
           description: Service unavailable response
       summary: Service Health Method
+  /v1/produtos:
+    get:
+      responses:
+        '200':
+          description: "Retorno com sucesso, lista de produtos"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Produto'
+        '404':
+          description: "Retorno com error"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+      summary: List de ceps
   /v1/ceps:
     get:
       responses:
@@ -216,13 +249,13 @@ paths:
   /v1/ceps/{cep}:
     get:
       parameters:
-      - description: Código do CEP
-        in: path
-        name: cep
-        required: true
-        schema:
-          example: 01001-000
-          type: string
+        - description: Código do CEP
+          in: path
+          name: cep
+          required: true
+          schema:
+            example: 01001-000
+            type: string
       responses:
         '200':
           description: "Retorno com sucesso"
@@ -238,5 +271,5 @@ paths:
                 $ref: '#/components/schemas/Empty'
       summary: Filtra um cep
 servers:
-- description: Development server
-  url: http://localhost:3000
+  - description: Development server
+    url: http://localhost:3000

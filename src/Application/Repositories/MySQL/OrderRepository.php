@@ -17,11 +17,11 @@ use Application\ValueObjects\ProductValueObject;
  * Group: Repository
  * TODO: deixar no plural para seguir a base de dados
  */
-class ProductRepository extends AbstractRepository
+class OrderRepository extends AbstractRepository
 {
-    protected string $table = 'products';
+    protected string $table = 'orders';
     protected string $schema = 'store';
-    protected string $tableAlias = 'p';
+    protected string $tableAlias = 'o';
     protected string $pk = 'id';
     protected string $uuidKey = 'uuid';
 

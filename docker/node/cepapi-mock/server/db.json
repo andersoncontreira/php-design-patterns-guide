@@ -24,6 +24,28 @@
       }
     }
   },
+  "produtos": [
+    {
+      "name": "Common Pen",
+      "supplier_id": 1,
+      "sku": 2,
+      "description": "Common Pen description",
+      "active": 1,
+      "created_at": "2021-08-17T14:00:00",
+      "uuid": "491ee81b-3538-4568-8f73-5edff59871f6",
+      "cep": 1
+    },
+    {
+      "cep": 3,
+      "name": "Common Pen 3",
+      "supplier_id": 1,
+      "sku": 3,
+      "description": "Common Pen description",
+      "active": 1,
+      "created_at": "2021-08-17T14:00:00",
+      "uuid": "491ee81b-3538-4568-8f73-5edff59871f6"
+    }
+  ],
   "ceps": [
     {
       "cep": "01001-000",
@@ -246,6 +268,18 @@
       "logradouro": "Avenida Marechal Floriano Peixoto",
       "complemento": "de 10462/10463 ao fim",
       "bairro": "Alto Boqueirão",
+      "localidade": "Curitiba",
+      "uf": "PR",
+      "ibge": "4106902",
+      "gia": "",
+      "ddd": "41",
+      "siafi": "7535"
+    },
+    {
+      "cep": "80430-040",
+      "logradouro": "Rua Desembargador Isaías Bevilaqua",
+      "complemento": "",
+      "bairro": "Mercês",
       "localidade": "Curitiba",
       "uf": "PR",
       "ibge": "4106902",

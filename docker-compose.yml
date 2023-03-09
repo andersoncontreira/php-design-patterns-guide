@@ -55,6 +55,7 @@ services:
       - "3000:3000"
     volumes:
       - ./docker/node/cepapi-mock/server:/app/server
+      - ./docker/node/cepapi-mock/public:/app/public
     networks:
       - service-php-v1
   redis:

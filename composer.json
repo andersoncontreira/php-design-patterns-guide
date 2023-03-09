@@ -15,6 +15,7 @@
     "ext-xmlwriter": "*",
     "darkaonline/swagger-lume": "8.*",
     "flipbox/lumen-generator": "^9.1",
+    "guzzlehttp/guzzle": "^7.5",
     "illuminate/config": "^8.83",
     "illuminate/container": "^8.83",
     "illuminate/database": "^8.83",

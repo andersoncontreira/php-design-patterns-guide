@@ -1,5 +1,6 @@
 {
   "/v1/*": "/$1",
   "/v1/ceps/:cep": "/ceps/:cep",
+  "/v1/produtos/:cep": "/produtos/:cep",
   "alive": "alive"
 }
