@@ -151,6 +151,16 @@ http://localhost:8000/docs
 Expected result:
 ![Swagger](./docs/images/swagger.png "Docs page").
 
+## ZiCode API
+We are using as data sourcing the site: https://viacep.com.br/.
+Just to collect some data for the CEP Api Mock.
+> Info: This mock will run on port 3000.
+```
+http://localhost:3000 - Swagger
+http://localhost:3000/ceps/ - ZipCode List
+http://localhost:3000/ceps/01001-000 - ZipCode Filtered
+```
+
 ## Migrations
 
 ### Creating migrations
