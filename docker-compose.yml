@@ -46,6 +46,17 @@ services:
       - php
     depends_on:
       - php
+  cepapi-mock:
+    build:
+      context: .
+      dockerfile: ./docker/node/cepapi-mock/Dockerfile
+    privileged: false
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./docker/node/cepapi-mock/server:/app/server
+    networks:
+      - service-php-v1
   redis:
     image: "redis:alpine"
     ports:

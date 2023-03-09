@@ -1,0 +1,257 @@
+{
+  "alive": {
+    "status": "healthy",
+    "totalDuration": "00:00:00.00800",
+    "entries": {
+      "self": {
+        "status": "healthy",
+        "duration": "00:00:00.00100",
+        "tags": []
+      },
+      "db": {
+        "status": "healthy",
+        "duration": "00:00:00.00100",
+        "tags": [
+          "db"
+        ]
+      },
+      "queue-service": {
+        "status": "healthy",
+        "duration": "00:00:00.00200",
+        "tags": [
+          "api"
+        ]
+      }
+    }
+  },
+  "ceps": [
+    {
+      "cep": "01001-000",
+      "logradouro": "Praça da Sé",
+      "complemento": "lado ímpar",
+      "bairro": "Sé",
+      "localidade": "São Paulo",
+      "uf": "SP",
+      "ibge": "3550308",
+      "gia": "1004",
+      "ddd": "11",
+      "siafi": "7107"
+    },
+    {
+      "cep": "91420-270",
+      "logradouro": "Rua São Domingos",
+      "complemento": "",
+      "bairro": "Bom Jesus",
+      "localidade": "Porto Alegre",
+      "uf": "RS",
+      "ibge": "4314902",
+      "gia": "",
+      "ddd": "51",
+      "siafi": "8801"
+    },
+    {
+      "cep": "91040-000",
+      "logradouro": "Rua Domingos Rubbo",
+      "complemento": "",
+      "bairro": "Cristo Redentor",
+      "localidade": "Porto Alegre",
+      "uf": "RS",
+      "ibge": "4314902",
+      "gia": "",
+      "ddd": "51",
+      "siafi": "8801"
+    },
+    {
+      "cep": "91040-320",
+      "logradouro": "Rua Domingos Martins",
+      "complemento": "",
+      "bairro": "Cristo Redentor",
+      "localidade": "Porto Alegre",
+      "uf": "RS",
+      "ibge": "4314902",
+      "gia": "",
+      "ddd": "51",
+      "siafi": "8801"
+    },
+    {
+      "cep": "91910-450",
+      "logradouro": "Rua Domingos da Silva",
+      "complemento": "",
+      "bairro": "Camaquã",
+      "localidade": "Porto Alegre",
+      "uf": "RS",
+      "ibge": "4314902",
+      "gia": "",
+      "ddd": "51",
+      "siafi": "8801"
+    },
+    {
+      "cep": "91120-090",
+      "logradouro": "Rua Domingos de Abreu",
+      "complemento": "",
+      "bairro": "Sarandi",
+      "localidade": "Porto Alegre",
+      "uf": "RS",
+      "ibge": "4314902",
+      "gia": "",
+      "ddd": "51",
+      "siafi": "8801"
+    },
+    {
+      "cep": "91360-040",
+      "logradouro": "Rua Domingos Seguézio",
+      "complemento": "",
+      "bairro": "Vila Ipiranga",
+      "localidade": "Porto Alegre",
+      "uf": "RS",
+      "ibge": "4314902",
+      "gia": "",
+      "ddd": "51",
+      "siafi": "8801"
+    },
+    {
+      "cep": "91790-072",
+      "logradouro": "Rua Domingos José Poli",
+      "complemento": "",
+      "bairro": "Restinga",
+      "localidade": "Porto Alegre",
+      "uf": "RS",
+      "ibge": "4314902",
+      "gia": "",
+      "ddd": "51",
+      "siafi": "8801"
+    },
+    {
+      "cep": "91160-080",
+      "logradouro": "Rua Luiz Domingos Ramos",
+      "complemento": "",
+      "bairro": "Santa Rosa de Lima",
+      "localidade": "Porto Alegre",
+      "uf": "RS",
+      "ibge": "4314902",
+      "gia": "",
+      "ddd": "51",
+      "siafi": "8801"
+    },
+    {
+      "cep": "90650-090",
+      "logradouro": "Rua Domingos Crescêncio",
+      "complemento": "",
+      "bairro": "Santana",
+      "localidade": "Porto Alegre",
+      "uf": "RS",
+      "ibge": "4314902",
+      "gia": "",
+      "ddd": "51",
+      "siafi": "8801"
+    },
+    {
+      "cep": "91910-420",
+      "logradouro": "Rua José Domingos Varella",
+      "complemento": "",
+      "bairro": "Cavalhada",
+      "localidade": "Porto Alegre",
+      "uf": "RS",
+      "ibge": "4314902",
+      "gia": "",
+      "ddd": "51",
+      "siafi": "8801"
+    },
+    {
+      "cep": "91120-480",
+      "logradouro": "Rua Domingos Antônio Santoro",
+      "complemento": "",
+      "bairro": "Sarandi",
+      "localidade": "Porto Alegre",
+      "uf": "RS",
+      "ibge": "4314902",
+      "gia": "",
+      "ddd": "51",
+      "siafi": "8801"
+    },
+    {
+      "cep": "91790-101",
+      "logradouro": "Rua Domingos Manoel Mincarone",
+      "complemento": "",
+      "bairro": "Restinga",
+      "localidade": "Porto Alegre",
+      "uf": "RS",
+      "ibge": "4314902",
+      "gia": "",
+      "ddd": "51",
+      "siafi": "8801"
+    },
+    {
+      "cep": "90420-200",
+      "logradouro": "Rua Domingos José de Almeida",
+      "complemento": "",
+      "bairro": "Rio Branco",
+      "localidade": "Porto Alegre",
+      "uf": "RS",
+      "ibge": "4314902",
+      "gia": "",
+      "ddd": "51",
+      "siafi": "8801"
+    },
+    {
+      "cep": "91261-304",
+      "logradouro": "Rua Domingos Mullet Rodrigues",
+      "complemento": "",
+      "bairro": "Mário Quintana",
+      "localidade": "Porto Alegre",
+      "uf": "RS",
+      "ibge": "4314902",
+      "gia": "",
+      "ddd": "51",
+      "siafi": "8801"
+    },
+    {
+      "cep": "91540-650",
+      "logradouro": "Acesso Olavo Domingos de Oliveira",
+      "complemento": "",
+      "bairro": "Jardim Carvalho",
+      "localidade": "Porto Alegre",
+      "uf": "RS",
+      "ibge": "4314902",
+      "gia": "",
+      "ddd": "51",
+      "siafi": "8801"
+    },
+    {
+      "cep": "91740-650",
+      "logradouro": "Praça Domingos Fernandes de Souza",
+      "complemento": "",
+      "bairro": "Cavalhada",
+      "localidade": "Porto Alegre",
+      "uf": "RS",
+      "ibge": "4314902",
+      "gia": "",
+      "ddd": "51",
+      "siafi": "8801"
+    },
+    {
+      "cep": "80020-320",
+      "logradouro": "Rua Marechal Deodoro",
+      "complemento": "até 0765 - lado ímpar",
+      "bairro": "Centro",
+      "localidade": "Curitiba",
+      "uf": "PR",
+      "ibge": 4106902,
+      "gia": "",
+      "ddd": 41,
+      "siafi": 7535
+    },
+    {
+      "cep": "81730-000",
+      "logradouro": "Avenida Marechal Floriano Peixoto",
+      "complemento": "de 10462/10463 ao fim",
+      "bairro": "Alto Boqueirão",
+      "localidade": "Curitiba",
+      "uf": "PR",
+      "ibge": "4106902",
+      "gia": "",
+      "ddd": "41",
+      "siafi": "7535"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "/v1/*": "/$1",
+  "/v1/ceps/:cep": "/ceps/:cep",
+  "alive": "alive"
+}

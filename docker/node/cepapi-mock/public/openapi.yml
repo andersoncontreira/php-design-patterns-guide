@@ -1,0 +1,242 @@
+components:
+  schemas:
+    Empty:
+      type: object
+    Entry:
+      properties:
+        duration:
+          example: '0:00:00.013737'
+          type: string
+        status:
+          example: healthy
+          type: string
+        tags:
+          items:
+            example: db
+            type: string
+          type: array
+      type: object
+    EntryData:
+      properties:
+        name:
+          $ref: '#/components/schemas/Entry'
+      type: object
+    EntryUnhealthy:
+      properties:
+        duration:
+          example: '0:00:00.013737'
+          type: string
+        status:
+          example: unhealthy
+          type: string
+        tags:
+          items:
+            example: db
+            type: string
+          type: array
+      type: object
+    EntryDataDeprecated:
+      properties:
+        name:
+          $ref: '#/components/schemas/EntryUnhealthy'
+      type: object
+    EntryDataUnhealthy:
+      properties:
+        name:
+          $ref: '#/components/schemas/EntryUnhealthy'
+      type: object
+    HealthCheck:
+      properties:
+        entries:
+          $ref: '#/components/schemas/EntryData'
+        status:
+          example: healthy
+          type: string
+        total_duration:
+          example: '0:00:00.013737'
+          type: string
+      type: object
+    HealthCheckDeprecated:
+      properties:
+        entries:
+          $ref: '#/components/schemas/EntryDataDeprecated'
+        status:
+          example: deprecated
+          type: string
+        total_duration:
+          example: '0:00:00.013737'
+          type: string
+      type: object
+    HealthCheckUnhealthy:
+      properties:
+        entries:
+          $ref: '#/components/schemas/EntryDataUnhealthy'
+        status:
+          example: unhealthy
+          type: string
+        total_duration:
+          example: '0:00:00.013737'
+          type: string
+      type: object
+    Cep:
+      properties:
+        cep:
+          example: "01001-000"
+          type: string
+        logradouro:
+          example: "Praça da Sé"
+          type: string
+        complemento:
+          example: "lado ímpar"
+          type: string
+        bairro:
+          example: "Sé"
+          type: string
+        localidade:
+          example: "São Paulo"
+          type: string
+        uf:
+          example: "SP"
+          type: string
+        ibge:
+          example: "3550308"
+          type: integer
+        gia:
+          example: "1004"
+          type: integer
+        ddd:
+          example: "11"
+          type: integer
+        siafi:
+          example: "7107"
+          type: integer
+      type: object
+    CepCreateRequest:
+      properties:
+        cep:
+          example: "80020-320"
+          type: string
+        logradouro:
+          example: "Rua Marechal Deodoro"
+          type: string
+        complemento:
+          example: "até 0765 - lado ímpar"
+          type: string
+        bairro:
+          example: "Centro"
+          type: string
+        localidade:
+          example: "Curitiba"
+          type: string
+        uf:
+          example: "PR"
+          type: string
+        ibge:
+          example: "4106902"
+          type: integer
+        gia:
+          example: ""
+          type: integer
+        ddd:
+          example: "41"
+          type: integer
+        siafi:
+          example: "7535"
+          type: integer
+      type: object
+info:
+  title: cepapi-mock
+  version: 1.0.0
+openapi: 3.0.2
+paths:
+  /alive:
+    get:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthCheck'
+          description: Success response
+        '424':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthCheckDeprecated'
+          description: Failed dependency response
+        '503':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthCheckUnhealthy'
+          description: Service unavailable response
+      summary: Service Health Method
+  /v1/ceps:
+    get:
+      responses:
+        '200':
+          description: "Retorno com sucesso, lista de ceps disponíveis"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cep'
+        '404':
+          description: "Retorno com error"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+      summary: List de ceps
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CepCreateRequest'
+        description: Event to be created
+        required: true
+      responses:
+        '201':
+          description: "Retorno com sucesso"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cep'
+        '404':
+          description: "Retorno com erro"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+        '500':
+          description: "Retorno com erro de duplicação"
+      summary: Cria um novo cep
+  /v1/ceps/{cep}:
+    get:
+      parameters:
+      - description: Código do CEP
+        in: path
+        name: cep
+        required: true
+        schema:
+          example: 01001-000
+          type: string
+      responses:
+        '200':
+          description: "Retorno com sucesso"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cep'
+        '404':
+          description: "Retorno com error"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+      summary: Filtra um cep
+servers:
+- description: Development server
+  url: http://localhost:3000

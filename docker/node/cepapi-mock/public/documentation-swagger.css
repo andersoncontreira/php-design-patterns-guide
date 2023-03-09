@@ -1,0 +1,58 @@
+/**
+ * Mix of current documentation css + swagger
+ */
+.swagger-container {
+    padding: 3rem !important;
+}
+
+.swagger-ui div:first-child svg {
+    display: none;
+}
+
+.swagger-ui .information-container.wrapper hgroup.main {
+    height: auto;
+    min-height: auto;
+}
+
+.swagger-ui pre {
+    background: none;
+    border: none;
+}
+
+.swagger-ui .info .title small {
+    font-size: 10px;
+    position: relative;
+    top: -5px;
+    display: inline-block;
+    margin: 0 0 0 5px;
+    padding: 2px 4px;
+    vertical-align: super;
+    border-radius: 57px;
+    background: #7d8492;
+}
+
+.swagger-ui .info .title small pre {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    color: #fff;
+}
+
+.swagger-ui .info .title small.version-stamp {
+    background-color: #89bf04;
+}
+
+.swagger-ui .info pre {
+    font-size: 14px;
+}
+
+.swagger-ui .info .title {
+    font-size: 36px;
+    margin: 0;
+    font-family: sans-serif;
+    color: #3b4151;
+}
+
+.swagger-ui .info {
+    margin: 0;
+}
